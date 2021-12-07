@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  checkout: &baseline
+    image: alpine/git
+    volumes:
+    - ./_deleteme:/code
+    working_dir: /code
+    entrypoint: ["git"]
+    command: >-
+      clone https://github.com/teamdigitale/dati-semantic-cookiecutter.git .
+  zero:
+    build:
+      context: ./
+      dockerfile: tests/Dockerfile.precommit
+    volumes:
+    - ./_deleteme:/code
+    working_dir: /code
+    entrypoint: ['pre-commit']
+    command: ['run', '-a']
+  one:
+    <<: *baseline
+    image: busybox
+    command: ['sh', '-c', 'exit 0']
+    depends_on:
+    - zero
