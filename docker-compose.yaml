@@ -43,7 +43,7 @@ services:
   test-1:
     build:
       context: ./
-      dockerfile: Dockerfile.precommit
+      dockerfile: tests/Dockerfile.precommit
     volumes:
     - .:/code
     working_dir: /code

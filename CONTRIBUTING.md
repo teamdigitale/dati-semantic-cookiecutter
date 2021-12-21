@@ -1,10 +1,10 @@
 # Risorse semantiche per il National Data Catalog
 
 Questo documento definisce le linee guida per pubblicare sul
-National Data Catalog for Semantic Interoperability usando un
+National Data Catalog for Semantic Interoperability - di seguito NDC - usando un
 repository git.
 
-## Notazione dei requisiti
+## Terminologia
 
 Conformemente alle norme ISO/IEC Directives, Part 3 per la stesura dei documenti tecnici
 questo documento utilizza le parole chiave "DEVE", "DEVONO", "NON DEVE", "NON DEVONO", "DOVREBBE",
@@ -17,20 +17,51 @@ questo documento utilizza le parole chiave "DEVE", "DEVONO", "NON DEVE", "NON DE
 - PUÒ o POSSONO o l’aggettivo OPZIONALE, indica che il lettore può scegliere
   di applicare o meno senza alcun tipo di implicazione o restrizione la specifica
 
+## Contenuto del repository
+
+Ogni repository può contenere una o più risorse  semantiche.
+Quelle supportate sono:
+
+- Ontologie;
+- Vocabolari controllati (e.g., tassonomie, code list, tesauri);
+- Schemi dati in formato OAS3 (OpenAPI Specifications versione 3).
+
+Future versioni del NDC possono supportare altre risorse semantiche
+ed altri formati.
+
 ## File richiesti e alberatura delle directory
 
 Il repository DEVE contenere i seguenti file:
 
-- ndc-config.yaml: referenziando la posizione delle risorse semantiche;
+- ndc-config.yaml: referenziando la posizione delle risorse semantiche
+  ed ulteriori informazioni necessarie
+  alla pubblicazione su NDC;
 - publiccode.yaml: contenente tutte le informazioni richieste dal
   [Catalogo del Riuso](https://DEVElopers.italia.it/it/software/).
+
+Un repository è a tutti gli effetti un oggetto pubblico indicizzato dal Catalogo del Riuso,
+e DEVE contenere un file [publiccode.yml conforme alle relative Linee Guida](https://docs.italia.it/italia/developers-italia/publiccodeyml)
+col riferimento al [codice IPA](https://www.indicepa.gov.it/) dell'ente che gestisce il repository.
+
+Queste informazioni verranno utilizzate anche per la continuità operativa del NDC.
+
+```yaml
+...
+maintenance:
+  contacts:
+email: info@teamdigitale.governo.it
+name: Dipartimento per la Trasformazione Digitale
+it:
+  riuso:
+    codiceIPA: pcm
+```
 
 Tutte le risorse fornite DEVONO risiedere all'interno della cartella `asset/`
 referenziato in ndc-config.yaml.
 Le risorse al di fuori du `asset/` non saranno elaborate.
 
 Ogni tipo di asset (ontologie, vocabolari controllati, schemi)
-DEVE risiedere nella sua cartella specifica con un nome pre-definito,
+DEVE risiedere nella sua cartella specifica con un nome predefinito,
 referenziato in ndc-config.yaml.
 
 I nomi di file e directory DEVONO corrispondere
