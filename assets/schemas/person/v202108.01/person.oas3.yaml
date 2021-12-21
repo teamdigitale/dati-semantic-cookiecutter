@@ -25,6 +25,8 @@ servers: []
 tags: []
 components:
   schemas:
+    EducationLevel:
+      $ref: "https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/master/other/vocabularies-schema/education-level.oas3.yaml#/SchemaVocabulary"
     TaxCode:
       type: string
       x-refersTo: https://w3id.org/italia/onto/CPV/taxCode
@@ -74,28 +76,26 @@ components:
         tax_code:
           $ref: "#/components/schemas/TaxCode"
         date_of_birth:
-          x-refersTo: https://w3id.org/italia/onto/CPV/dateOfBirth
           format: date
           type: string
         family_name:
-          x-refersTo: https://w3id.org/italia/onto/CPV/familyName
           maxLength: 255
           type: string
         given_name:
-          x-refersTo: https://w3id.org/italia/onto/CPV/givenName
           maxLength: 255
           type: string
         children:
-          x-refersTo: https://w3id.org/italia/onto/CPV/hasChildren
           type: array
           items:
             $ref: "#/components/schemas/Person"
           minItems: 0
           maxItems: 50
         parents:
-          x-refersTo: https://w3id.org/italia/onto/CPV/hasParents
           type: array
           items:
             $ref: "#/components/schemas/Parent"
           maxItems: 2
           minItems: 0
+    All:
+     anyOf:
+     - $ref: "#/components/schemas/Person"

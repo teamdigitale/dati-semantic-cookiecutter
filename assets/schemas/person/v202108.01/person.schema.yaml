@@ -15,10 +15,12 @@
   Parent:
     $id: "#/$defs/Parent"
     type: string
-    x-refersTo: https://w3id.org/italia/onto/CPV/Person
     description: |-
       Uno schema semplificato per associare il solo URL
       che identifica un genitore.
+    x-jsonld-context:
+      "@vocab": "https://w3id.org/italia/onto/CPV/"
+      parent_id: taxCode
     additionalProperties: false
     required:
       - href
@@ -33,6 +35,16 @@
     additionalProperties: false
     description: |-
         Questo schema rappresenta una persona fisica.
+    x-jsonld-context:
+      "@vocab": "https://w3id.org/italia/onto/CPV/"
+      tax_code: taxCode
+      date_of_birth: dateOfBirth
+      given_name: givenName
+      family_name: familyName
+      children:
+        "@id": hasChildren
+      parents:
+        "@id": hasParents
     required:
     - given_name
     - family_name
@@ -41,26 +53,21 @@
       tax_code:
         $ref: "#/$defs/TaxCode"
       date_of_birth:
-        x-refersTo: https://w3id.org/italia/onto/CPV/dateOfBirth
         format: date
         type: string
       family_name:
-        x-refersTo: https://w3id.org/italia/onto/CPV/familyName
         maxLength: 255
         type: string
       given_name:
-        x-refersTo: https://w3id.org/italia/onto/CPV/givenName
         maxLength: 255
         type: string
       children:
-        x-refersTo: https://w3id.org/italia/onto/CPV/hasChildren
         type: array
         items:
           $ref: "#/$defs/Person"
         maxItems: 50
         minItems: 0
       parents:
-        x-refersTo: https://w3id.org/italia/onto/CPV/hasParents
         type: array
         items:
           $ref: "#/$defs/Parent"
