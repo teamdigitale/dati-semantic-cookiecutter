@@ -15,26 +15,22 @@
 This description field can be rendered in markdown or in text-only in catalogues
 and other interfaces.""" ;
     dct:modified "2021-12-09" ;
-    dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid>,
-        "http://spcdata.digitpa.gov.it/Amministrazione/agid" ;
+    dct:rightsHolder <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2>;
     dct:title "The Person schema" ;
     owl:versionInfo "202108.01.00" ;
-    dcat:distribution <https://raw.githubusercontent.com/ioggstream/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> ;
+    dcat:distribution <https://raw.githubusercontent.com/teamdigitale/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> ;
     dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECHNOLOGY> ;
     admsapt:hasKeyClass cpv:Person .
 
-<http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent,
-        foaf:Agent ;
-    dct:identifier "agid" ;
-    foaf:name "Roberto Polli" .
-
-<https://raw.githubusercontent.com/ioggstream/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> a dcatapit:Distribution ;
+<https://raw.githubusercontent.com/teamdigitale/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> a dcatapit:Distribution ;
     dct:format <http://publications.europa.eu/resource/authority/file-type/JSON> ;
     dct:license licences:A21_CCBY40 ;
-    dcat:accessURL <https://github.com/ioggstream/json-semantic-playground/tree/master/assets/schemas/person/v202108.01> ;
+    dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> ;
+    dcat:accessURL <https://github.com/teamdigitale/json-semantic-playground/tree/master/assets/schemas/person/v202108.01> ;
     dcat:mediaType "application/json" .
 
-<http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent,
+
+<https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> a dcatapit:Agent,
         foaf:Agent ;
-    dct:identifier "agid" ;
-    foaf:name "Agenzia per l'Italia Digitale" .
+    dct:identifier "pcm-AA1D3A2" ;
+    foaf:name "Dipartimento per la Trasformazione Digitale" .

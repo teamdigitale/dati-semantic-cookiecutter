@@ -66,9 +66,8 @@ repos:
 #
 # Semantic checks.
 #
-- repo: https://github.com/ioggstream/json-semantic-playground
+- repo: https://github.com/teamdigitale/json-semantic-playground
   rev: 2c9df2dd00ad2151d39d34d67179049f4badf792
-  # rev: 5c41050a4752ef36985ef4f923f1620b89bd5901
   hooks:
   - id: validate-oas-schema
     files: >-
