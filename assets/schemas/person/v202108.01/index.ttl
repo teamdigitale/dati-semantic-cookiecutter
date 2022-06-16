@@ -27,7 +27,7 @@ and other interfaces.""" ;
     dct:license licences:A21_CCBY40 ;
     dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/json-semantic-playground/master/assets/schemas/person/v202108.01/person.oas3.yaml> ;
     dcat:accessURL <https://github.com/teamdigitale/json-semantic-playground/tree/master/assets/schemas/person/v202108.01> ;
-    dcat:mediaType "application/json" .
+    dcat:mediaType "application/yaml" .
 
 
 <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> a dcatapit:Agent,

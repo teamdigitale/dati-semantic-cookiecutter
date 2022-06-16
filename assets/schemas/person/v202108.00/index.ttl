@@ -15,15 +15,15 @@ and other interfaces.""" ;
     dct:rightsHolder <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> ;
     dct:title "The Person schema" ;
     owl:versionInfo "202108.01.00" ;
-    dcat:distribution <https://raw.githubusercontent.com/ioggstream/json-semantic-playground/master/assets/schemas/person/v202108.00/person.oas3.yaml> ;
+    dcat:distribution <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> ;
     dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECHNOLOGY> .
 
-<https://raw.githubusercontent.com/ioggstream/json-semantic-playground/master/assets/schemas/person/v202108.00/person.oas3.yaml> a dcatapit:Distribution ;
+<https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> a dcatapit:Distribution ;
     dct:format <http://publications.europa.eu/resource/authority/file-type/JSON> ;
     dct:license licences:A21_CCBY40 ;
-    dcat:downloadURL <https://raw.githubusercontent.com/ioggstream/json-semantic-playground/master/assets/schemas/person/v202108.00/person.oas3.yaml>;
-    dcat:accessURL <https://github.com/ioggstream/json-semantic-playground/tree/master/assets/schemas/person/v202108.00> ;
-    dcat:mediaType "application/json" .
+    dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml>;
+    dcat:accessURL <https://github.com/teamdigitale/dati-semantic-cookiecutter/tree/main/assets/schemas/person/v202108.00> ;
+    dcat:mediaType "application/yaml" .
 
 <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> a dcatapit:Agent,
         foaf:Agent ;

@@ -42,6 +42,9 @@ An OAS3 schema file MUST end with "oas3.yaml".
 
 ## JsonSchema
 
+Currently, NDC does not support generic JSON schema files, but only
+OAS3.0 schema files.
+
 File: person.schema.yaml
 
 
