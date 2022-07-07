@@ -1,0 +1,241 @@
+openapi: 3.0.3
+components:
+  schemas:
+    OdonimoLocalizzato:
+      x-jsonld-type: https://w3id.org/italia/onto/CLV/StreetToponym
+      x-jsonld-context: &OdonimoLocalizzato_context
+        lingua: '@language'
+        odonimo: '@value'
+      example:
+        lingua: it
+        odonimo: 'Via dei Mille'
+      type: object
+      additionalProperties: false
+      properties:
+        odonimo:
+          type: string
+          maxLength: 128
+        lingua:
+          type: string
+          pattern: '[a-z]+'
+          enum:
+          - lad  # ladino
+          - fr   # francese
+          - it   # italiano
+          - en   # inglese
+          - de   # tedesco
+          description: |-
+            BCP 47 language tags ex IANA Registry https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+    Documento:
+      type: object
+      additionalProperties: false
+      description: |-
+        TODO: Verificare se conviene semplicemente usare i nomi dei campi.
+      properties:
+        protocollo:
+          type: string
+          description: |-
+            Identificativo univoco del documento, dell'atto o della delibera.
+            NOTA: il campo si chiama protocollo perché così è indicato
+            in [questo documento del 2018](https://www.agenziaentrate.gov.it/portale/documents/20143/266134/Guida+operativa+funzioni+a+regime_Guida+operativa_26112018.pdf/9c89eab4-b9d5-96ef-9899-f258c26b2e55)
+        data:
+          type: string
+          format: date
+          description: |-
+            Data della pubblicazione del documento, dell'atto o della delibera.
+        ente:
+          type: string
+          description: |-
+            Tipo di ente che pubblica il documento, dell'atto o della delibera.
+          enum:
+          - Comune
+          - Prefettura
+
+    Luogo:
+      example: &Luogo_example
+        codice_nazionale: E472
+        codice_istat: '010301'
+        denominazione_localita: Ostia
+      x-jsonld-type: https://w3id.org/italia/onto/CLV/AdminUnitComponent
+      x-jsonld-context: &Luogo_context
+        '@vocab': https://w3id.org/italia/onto/CLV/
+        codice_nazionale:
+          '@type': '@id'
+          '@id': hasCity
+          '@context':
+            '@base': >-
+              https://w3id.org/italia/data/identifiers/cities-identifiers/cadastral-code/
+        codice_istat:
+          '@type': '@id'
+          '@id': hasCity
+          '@context':
+            '@base': >-
+              https://w3id.org/italia/data/identifiers/cities-identifiers/alphanumeric-istat-code/
+        denominazione_localita:
+          '@id': hasAddressArea
+      type: object
+      required:
+        - codice_nazionale
+        - codice_istat
+      properties:
+        codice_nazionale:
+          description: >-
+            Il codice utilizzato per generare il codice fiscale
+
+            preso dal vocabolario pubblicato su
+            https://sister.agenziaentrate.gov.it/CitizenArCom/
+          type: string
+          maxLength: 4
+          example: H501
+        codice_istat:
+          type: string
+          description: indicare vocabolario.... 0 davanti? ..
+        denominazione_localita:
+          description: 'valore opzionale per indicare la località '
+          type: string
+          pattern: '[A-Z a-z]{0,64}'
+          example: Ostia
+
+    Odonimo:
+      example:
+        codice_nazionale: '1234567890'
+        codice_comunale: '0987'
+        dug: viale
+        duf: Giuseppe Mazzini
+        odonimi_alternativi:
+          - odonimo: via Vipiteno
+            lingua: it
+          - odonimo: Mazzinistraße
+            lingua: de
+          - odonimo: Mazzini boulevard
+            lingua: fr
+
+        # Dati amministrativi
+        valido_dal: "1861-12-01"
+        valido_al: "2020-02-01"
+        aggiornato_il: "2020-02-01"
+        delibera:
+          data: "2020-01-30"
+          protocollo: BB-010101
+        prefettura:
+          data: "2020-03-01"
+          protocollo: AA-010101
+        # Comune
+        comune:
+          <<: *Luogo_example
+      x-jsonld-type: https://w3id.org/italia/onto/CLV/StreetToponym
+      x-jsonld-context:
+        '@vocab': https://w3id.org/italia/onto/CLV/
+        codice_comunale:
+          '@id': hasIdentifier
+        codice_nazionale:
+          '@id': hasIdentifier
+        duf: officialStreetName
+        dug: toponymQualifier
+        odonimi_alternativi:
+          '@id': hasStreetToponym
+          '@context':
+            <<: *OdonimoLocalizzato_context
+        prefettura:
+          "@id": "autorizzazionePrefettura"
+        delibera:
+          "@id": "deliberaComunale"
+        comune:
+          "@id": hasCity
+          "@context":
+            <<: *Luogo_context
+      type: object
+      required:
+        - codice_nazionale
+        - codice_comunale
+        - dug
+        - duf
+      additionalProperties: false
+      properties:
+        comune:
+          $ref: "#/components/schemas/Luogo"
+        codice_nazionale:
+          description: |-
+            Questo campo potrebbe essere soggetto a limitazioni
+            nella pubblicazione: verificare con il GNPD.
+          type: string
+          pattern: '[1-9][0-9]{1,15}'
+          maxLength: 16
+        codice_comunale:
+          description: |-
+            Questo campo potrebbe essere soggetto a limitazioni
+            nella pubblicazione: verificare con il GNPD.
+          type: string
+          pattern: '[1-9][0-9]{1,15}'
+          maxLength: 16
+        dug:
+          type: string
+          description: denominazione urbanistica generica. URL del duggario.
+          pattern: '[a-zA-Z]{0,16}'
+          example: Viale
+        duf:
+          type: string
+          description: |-
+            La denominazione ufficiale dell'odonimo. Verificare
+            i caratteri ammessi (maiuscole, minuscole, accentate,
+            traslitterate).
+          example: Giuseppe Mazzini
+        odonimi_alternativi:
+          description: |-
+            Questa lista potrebbe anche contenere come primo campo
+            il valore in italiano dell'Odonimo.
+
+            In alternativa ad un array, si potrebbe anche usare
+            un dizionario del tipo:
+
+            {"it": "piazza Mazzini",
+             "de": "Mazzinistraße",
+             "fr": "avenue Mazzini",
+             "lad": "plaza Mazzini"}
+          type: array
+          maxItems: 5
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/OdonimoLocalizzato'
+        valido_dal:
+          type: string
+          format: date
+        valido_al:
+          type: string
+          format: date
+          nullable: true
+          description: |-
+            Se l'odonimo è valido, usare null
+        aggiornato_il:
+          type: string
+          format: date
+          description: |-
+            date o date-time ?
+        delibera:
+          $ref: '#/components/schemas/Documento'
+        prefettura:
+          $ref: '#/components/schemas/Documento'
+    All:
+      oneOf:
+        - $ref: '#/components/schemas/Odonimo'
+
+paths: {}
+servers: []
+tags: []
+info:
+  title: A schema collection
+  version: 202108.01.00
+  x-summary: A schema collection with CPV ontology.
+  license:
+    name: BSD3
+    url: https://opensource.org/licenses/BSD-3-Clause
+  termsOfService: https://opensource.org/licenses/BSD-3-Clause
+  contact:
+    name: Roberto Polli
+    email: robipolli@gmail.com
+    url: http://spcdata.digitpa.gov.it/Amministrazione/agid
+  description: |-
+
+    ## Welcome!
+    Edit the following schema examples in this semantic editor
+    based on Swagger Editor.
