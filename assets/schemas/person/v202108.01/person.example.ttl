@@ -1,15 +1,17 @@
-#
-# This is the semantically correct version of the data
-#   in person.example.yaml.
-#
 @prefix : <https://w3id.org/italia/onto/CPV/> .
 
-<http://anpr/PLLCLL> :familyName  "Polli" .
-<http://anpr/PLLCLL> :givenName   "Camilla" .
-<http://anpr/PLLRCR> :givenName   "Riccardo" .
-<http://anpr/PLLRCR> :surname     "Polli" .
-<http://anpr/PLLRRT> :givenName   "Roberto" .
-<http://anpr/PLLRRT> :hasChildren <http://anpr/PLLCLL> .
-<http://anpr/PLLRRT> :hasChildren <http://anpr/PLLRCR> .
-<http://anpr/PLLRRT> :surname     "Polli" .
-<http://anpr/PLLRRT> :taxCode     "PLLRRT" .
+### Annotations
+
+<http://anpr/PLLCLL> :familyName "Polli" ;
+    :givenName "Camilla" .
+
+<http://anpr/PLLRCR> :givenName "Riccardo" ;
+    :surname "Polli" .
+
+<http://anpr/PLLRRT> :givenName "Roberto" ;
+    :hasChildren <http://anpr/PLLCLL>,
+        <http://anpr/PLLRCR> ;
+    :surname "Polli" ;
+    :taxCode "PLLRRT" .
+
+### Serialized using the ttlser deterministic serializer v1.2.0

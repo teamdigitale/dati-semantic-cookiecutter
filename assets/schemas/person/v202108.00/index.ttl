@@ -1,31 +1,35 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix licences: <https://w3id.org/italia/controlled-vocabulary/licences/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-<https://w3id.org/italia/schema/person/v202108.00/person.oas3.yaml> a dcatapit:Dataset ;
-    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
-    dct:description """This Person schema is derived from the [CPV/Person](https://w3id.org/italia/onto/CPV/Person) ontology.
-
-This description field can be rendered in markdown or in text-only in catalogues
-and other interfaces.""" ;
-    dct:modified "2021-12-20" ;
-    dct:rightsHolder <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> ;
-    dct:title "The Person schema" ;
-    owl:versionInfo "202108.01.00" ;
-    dcat:distribution <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> ;
-    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECHNOLOGY> .
+### Annotations
 
 <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> a dcatapit:Distribution ;
-    dct:format <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-    dct:license licences:A21_CCBY40 ;
-    dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml>;
     dcat:accessURL <https://github.com/teamdigitale/dati-semantic-cookiecutter/tree/main/assets/schemas/person/v202108.00> ;
-    dcat:mediaType "application/yaml" .
+    dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> ;
+    dcat:mediaType "application/yaml" ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/JSON> ;
+    dcterms:license licences:A21_CCBY40 .
 
 <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> a dcatapit:Agent,
         foaf:Agent ;
-    dct:identifier "pcm-AA1D3A2" ;
+    dcterms:identifier "pcm-AA1D3A2" ;
     foaf:name "Dipartimento per la Trasformazione Digitale" .
+
+<https://w3id.org/italia/schema/person/v202108.00/person.oas3.yaml> a dcatapit:Dataset ;
+    owl:versionInfo "202108.01.00" ;
+    dcat:distribution <https://raw.githubusercontent.com/teamdigitale/dati-semantic-cookiecutter/main/assets/schemas/person/v202108.00/person.oas3.yaml> ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECHNOLOGY> ;
+    dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+    dcterms:description """This Person schema is derived from the [CPV/Person](https://w3id.org/italia/onto/CPV/Person) ontology.
+
+This description field can be rendered in markdown or in text-only in catalogues
+and other interfaces.""" ;
+    dcterms:modified "2021-12-20" ;
+    dcterms:rightsHolder <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> ;
+    dcterms:title "The Person schema" .
+
+### Serialized using the ttlser deterministic serializer v1.2.0
