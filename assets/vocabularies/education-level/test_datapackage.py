@@ -96,3 +96,28 @@ def ld_to_csv(json_ld, dpath):
             delimiter=",",
         ),
     )
+
+
+from flask import request
+
+package = Package("datapackage.json")
+package.validate()
+for resource in package.resources:
+    resource.validate()
+    data = resource.read_rows()
+    context = resource["schema"]["x-jsonld-context"]
+
+
+def list_entries():
+    json_ld = {
+        "@context": context,
+        "@graph": data,
+    }
+    accept = request.headers.get("Accept")
+    if accept == "text/turtle":
+        g = Graph()
+        g.parse(data=json_ld, format="application/ld+json")
+        ret = g.serialize(format="text/turtle")
+        print(ret)
+        return ret
+    return json_ld
