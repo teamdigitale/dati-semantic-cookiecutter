@@ -14,3 +14,8 @@ exclude_dirs:
  - venv
  - tests
  - openapi
+
+# Skip assert inside test files.
+assert_used:
+  skips:
+  - "*/test_*.py"
