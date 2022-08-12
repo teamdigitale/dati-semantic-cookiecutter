@@ -109,11 +109,14 @@ for resource in package.resources:
 
 
 def list_entries():
+    accept = request.headers.get("Accept")
+    if accept == "application/json":
+        return data
+
     json_ld = {
         "@context": context,
         "@graph": data,
     }
-    accept = request.headers.get("Accept")
     if accept == "text/turtle":
         g = Graph()
         g.parse(data=json_ld, format="application/ld+json")
