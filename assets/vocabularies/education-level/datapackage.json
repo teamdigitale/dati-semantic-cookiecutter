@@ -10,7 +10,7 @@
             "name": "education-level",
             "path": "education-level.csv",
             "profile": "tabular-data-resource",
-            "description": "The Education Level Vocabulary generated\nfrom RDF data.",
+            "description": "The Education Level Vocabulary generated from RDF data.",
             "format": "csv",
             "mediatype": "text/csv",
             "encoding": "utf-8",

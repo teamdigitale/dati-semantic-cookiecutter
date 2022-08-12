@@ -1,6 +1,0 @@
-pytest
-pyyaml
-frictionless
-frictionless[json]
-rdflib
-pyld
