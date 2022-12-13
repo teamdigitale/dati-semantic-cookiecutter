@@ -15,6 +15,13 @@ label_ITA_1_livello: {}
 label_ENG_1_livello: {}
 definizione: {}
 
+# Use wildcard to select specific language tags.
+#   They will be mapped using the fields specified
+#   in the context.
+skos:prefLabel:
+  "@language": ["it", "en"]
+  "@value": {}
+
 # Use context.
 "@context":
 
