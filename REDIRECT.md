@@ -68,7 +68,7 @@ Il merge sul branch master verrà effettuato direttamente da w3id.org e determin
 
 ## Contenuto dei file .htaccess e del README.md
 
-Di seguito è data una descrizione di file `.htaccess` per ciascuna tipologia di risorsa, da cui l'Organizzazione contributrice DOVREBBE prendere spunto al fine creare i propri file di redirect.
+Di seguito è data una descrizione di file `.htaccess` per ciascuna tipologia di risorsa, da cui l'Organizzazione contributrice DOVREBBE prendere spunto al fine creare i propri file di redirect. Gli snippet di codice di esempio sono basati sull'assunzione che per ciascuna risorsa semantica (es. ontologia) il nome della stessa nell'URI di referenziazione sia uguale al nome della cartella che contiene i relativi file sul git sorgente, e anche uguale ai nomi dei file a meno dell'estensione. In caso contrario, si renderebbe necessario sviluppare apposite regole di redirect più complesse.
 
 ### controlled-vocabulary
 
