@@ -60,7 +60,7 @@ The merge on the master branch will be carried out directly from w3id.org and wi
 
 ## Contents of htaccess and README.md files
 
-Below is a description of the `.htaccess` file for each type of resource, from which the contributing organization SHOULD take inspiration in order to create its own redirect files.
+Below is a description of the `.htaccess` file for each type of resource, from which the contributing organization SHOULD take inspiration in order to create its own redirect files. The example code snippets are based on the assumption that for each semantic resource (e.g. ontology) the name in the URI is equal to the name of the folder containing the related files on the source git, and also equal to the names of files (except their extension). Otherwise, it would be necessary to develop more complex redirection rules.
 
 ### controlled-vocabulary
 
