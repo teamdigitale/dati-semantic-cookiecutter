@@ -4,7 +4,7 @@ FROM tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
 COPY ./sparql/virtuoso.ini /conf/virtuoso.ini
 COPY ./sparql/virtuoso.sh /virtuoso.sh
 
-COPY vocabularies /usr/local/virtuoso-opensource/share/virtuoso/vad/vocabularies
+COPY controlled-vocabularies /usr/local/virtuoso-opensource/share/virtuoso/vad/controlled-vocabularies
 COPY ontologies /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
 COPY schemas /usr/local/virtuoso-opensource/share/virtuoso/vad/schemas
 
