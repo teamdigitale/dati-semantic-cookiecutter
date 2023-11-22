@@ -69,6 +69,15 @@ al pattern `[A-ZA-Z0-9 _-.]{, 64}`.
 Gli spazi NON DEVONO essere utilizzati nei file o nei nomi delle directory.
 Le directory DEVONO essere in minuscolo.
 
+Il nome di ciascun file DEVE corrispondere al nome della relativa risorsa 
+nell'URI utilizzato per referenziarla. 
+I nomi dei file di una directory DEVONO corrispondere al nome della directory
+che li contiene, a meno dell'estensione degli stessi.
+
+Inoltre, DEVONO essere creati e pubblicati sul repository del w3id i file
+`htaccess` che definiscono le regole di redirect delle URI, così come descritto
+ in [REDIRECT.md](REDIRECT.md).
+
 I contenuti degli asset DEVONO essere codificati in UTF-8 o ASCII.
 
 Ogni risorsa DEVE risiedere sotto la sua cartella specifica:
