@@ -80,6 +80,6 @@ repos:
       ^assets\/ontologies\/[^\/]+\/latest\/.*\.ttl
   - id: validate-turtle
     files: >-
-      ^assets\/vocabularies\/.*\.ttl
+      ^assets\/controlled-vocabularies\/.*\.ttl
   - id: validate-directory-versioning
     files: '^assets\/ontologies\/.*\.ttl'
