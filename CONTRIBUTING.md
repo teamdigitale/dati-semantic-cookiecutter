@@ -29,7 +29,7 @@ Quelle supportate sono:
 Future versioni del NDC possono supportare altre risorse semantiche
 ed altri formati.
 
-## File richiesti e alberatura delle directory
+## File richiesti e layout del repository
 
 Il repository DEVE contenere i seguenti file:
 
@@ -37,7 +37,7 @@ Il repository DEVE contenere i seguenti file:
   ed ulteriori informazioni necessarie
   alla pubblicazione su NDC;
 - publiccode.yaml: contenente tutte le informazioni richieste dal
-  [Catalogo del Riuso](https://DEVElopers.italia.it/it/software/).
+  [Catalogo del Riuso](https://developers.italia.it/it/software).
 
 Un repository è a tutti gli effetti un oggetto pubblico indicizzato dal Catalogo del Riuso,
 e DEVE contenere un file [publiccode.yml conforme alle relative Linee Guida](https://docs.italia.it/italia/developers-italia/publiccodeyml)
@@ -56,9 +56,9 @@ it:
     codiceIPA: pcm
 ```
 
-Tutte le risorse fornite DEVONO risiedere all'interno della cartella `asset/`
+Tutte le risorse fornite DEVONO risiedere all'interno della cartella `assets/`
 referenziato in ndc-config.yaml.
-Le risorse al di fuori du `asset/` non saranno elaborate.
+Le risorse al di fuori di `assets/` non saranno elaborate.
 
 Ogni tipo di asset (ontologie, vocabolari controllati, schemi)
 DEVE risiedere nella sua cartella specifica con un nome predefinito,
@@ -125,23 +125,23 @@ risorse RDF in altre serializzazioni
 Queste non saranno elaborate.
 
 Questi file POSSONO essere inseriti nello stesso
-repository al di fuori della cartella `asset/`;
+repository al di fuori della cartella `assets/`;
 In questo caso, essi
 DOVREBBERO essere generati automaticamente
-dai file originali in `asset/`.
+dai file originali in `assets/`.
 
 ## Ontologie
 
 Le ontologie pubblicate DEVONO essere conformi alle relative
-[Linee guida nazionali]().
+Linee guida nazionali.
 
 Le ontologie DEVONO essere pubblicate solo in formato RDF/Turtle
 (media-type `text/turtle`) e l'estensione del file DEVE essere `.ttl`.
 
 ## Vocabolari controllati
 
-I vocabolari controllati pubblicati DEVONO essere conformi agli associati
-[Linee guida nazionali]().
+I vocabolari controllati pubblicati DEVONO essere conformi alle relative
+Linee guida nazionali.
 
 I vocabolari controllati DEVONO essere pubblicati solo in formato RDF/Turtle
 (media-type `text/turtle`) e l'estensione del file DEVE essere `.ttl`.
@@ -158,8 +158,7 @@ tramite un `@context` [JSON-LD 1.1](https://www.w3.org/TR/json-ld11/).
 
 ## Schemi
 
-Gli schemi pubblicati devono essere conformi agli associati
-[Linee guida nazionali]().
+Gli schemi pubblicati devono essere conformi alle relative Linee guida nazionali.
 
 Gli schemi per le API dell'OAS3 devono essere pubblicati in formato OpenAPI3,
 Incorporato nella sezione `#/components/schema` del file OAS.
@@ -201,5 +200,5 @@ l'[OpenAPI Checker](https://italia.github.io/api-oas-checker).
 
 ## Controlli automatici
 
-Il repository DOVREBBE utilizzare strumenti di continuous integratio
+Il repository DOVREBBE utilizzare strumenti di continuous integration
 come github-actions o gitlab-ci per verificare la consistenza dei contenuti.

@@ -11,7 +11,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when,
 and only when, they appear in all capitals, as shown here.
 
-## Required files and directory layout
+## Required files and repository layout
 
 The repository MUST contain the following files:
 
@@ -100,7 +100,7 @@ from the original files in `assets/`.
 ## Ontologies
 
 Published ontologies MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Ontologies MUST be published only in RDF/Turtle format
 (media-type `text/turtle`).
@@ -115,7 +115,7 @@ Those files will not be processed.
 ## Controlled Vocabularies
 
 Published controlled vocabularies MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Controlled Vocabularies MUST be published in RDF/Turtle format
 (media-type `text/turtle`).
@@ -132,7 +132,7 @@ File extension MUST be `.csv`.
 ## Schemas
 
 Published schemas MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Schemas for OAS3 APIs MUST be published in OpenAPI3 format,
 embedded in the `#/components/schemas` section of the OAS file.
