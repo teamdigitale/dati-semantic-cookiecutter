@@ -1,0 +1,40 @@
+# Never embed external references.
+"@embed": "@always"
+# Matching on type works.
+# see
+"@type":
+- "https://w3id.org/italia/onto/CPV/EducationLevel"
+
+# Matching on properties
+# doesn't work https://www.w3.org/TR/json-ld11-framing/#matching-on-properties
+
+# Only process explicit fields.
+"@explicit": true
+codice_1_livello: {}
+label_ITA_1_livello: {}
+label_ENG_1_livello: {}
+definizione: {}
+
+# Use context.
+"@context":
+
+  # Namespaces.
+  "@vocab": https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/
+  "@base": https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/
+  skos: http://www.w3.org/2004/02/skos/core#
+
+  # Fields.
+  codice_1_livello:
+    "@id": "@id"
+    "@type": "@id"
+
+  # Localize labels. Order is relevant.
+  label_ENG_1_livello:
+    "@id": skos:prefLabel
+    "@language": en
+  label_ITA_1_livello:
+    "@id": skos:prefLabel
+    "@language": it
+  definizione:
+    "@id": skos:definition
+    "@language": it
