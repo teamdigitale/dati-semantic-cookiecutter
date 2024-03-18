@@ -1,0 +1,74 @@
+#
+# Define running hooks.
+#
+
+- id: check-repo-structure
+  name: Check Repository Structure
+  description: |-
+    Check whether the directory structure is correct 
+    - assets/ontologies/*
+    - assets/controlled-vocabularies/*
+    - assets/schemas/*
+  entry: python ./scripts/check_repo_structure.py
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
+
+- id: check-filename-format
+  name: Check Filename Format
+  description: |-
+    Check whether file and directory names follow the specified format (^[\\.a-z0-9 _-]{1,64}$)
+  entry: python ./scripts/check_filename_format.py
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
+
+- id: check-filenames-match-uri
+  name: Check Filename match URI
+  description: |-
+    Checks whether the name of each TTL or oas3.yaml file matches the final part of its relative URI
+  entry: python ./scripts/check_filename_match_uri.py
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
+  additional_dependencies: [rdflib]
+
+- id: check-filenames-match-directories
+  name: Check Filename match Directories
+  description: |-
+    Check if filenames match the containing directory names
+  entry: python ./scripts/check_filenames_match_directories.py
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
+
+- id: check-supported-files
+  name: Check encoding and file suffix
+  entry: python ./scripts/check_supported_files.py
+  description: |-
+    Checks the leaf directories of the specified root directories 
+    to ensure that each leaf directory contains at least one .ttl file in UTF-8 format.
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
+
+- id: check-versioning-pattern
+  name: Check versioning pattern
+  entry: python ./scripts/check_versioning_pattern.py
+  description: |-
+    Check if the versioning pattern is correct for leaf directories
+  args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+  language: python
+  files: ^assets/.*
+  pass_filenames: false
+  types: [file]
