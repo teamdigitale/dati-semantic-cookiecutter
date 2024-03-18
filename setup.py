@@ -11,7 +11,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=requirements,
     include_package_data=True,
-    package_data={"": ["scripts/*.yaml"]},
+    package_data={"": ["scripts/*.py"]},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -1,7 +1,7 @@
-import os
+#!/usr/bin/env python
 import sys
 from pathlib import Path
-from rdflib import Graph, RDF, RDFS, OWL, SKOS, URIRef, Namespace
+from rdflib import Graph, RDF, RDFS, OWL, SKOS, Namespace
 
 def extract_main_uri(ttl_file):
     """
