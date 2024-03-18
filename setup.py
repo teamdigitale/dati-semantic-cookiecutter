@@ -9,6 +9,11 @@ setuptools.setup(
     description="Tools to check semantic assets",
     packages=setuptools.find_packages(),
     install_requires=requirements,
+    entry_points={
+        "console_scripts": [
+            "check_repo_structure = dati_semantic_cookiecutter.scripts.check_repo_structure:main",
+        ]
+    },
     include_package_data=True,
     package_data={"": ["scripts/*.py"]},
     classifiers=[
