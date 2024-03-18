@@ -7,7 +7,6 @@ setuptools.setup(
     name="dati_semantic_cookiecutter",
     version="0.1.0",
     description="Tools to check semantic assets",
-    #url="https://github.com/FrankMaverick/dati-semantic-cookiecutter",
     packages=setuptools.find_packages(),
     install_requires=requirements,
     include_package_data=True,
