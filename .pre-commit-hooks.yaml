@@ -9,7 +9,7 @@
     - assets/ontologies/*
     - assets/controlled-vocabularies/*
     - assets/schemas/*
-  entry: python ./scripts/check_repo_structure.py
+  entry: check_repo_structure.py
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   language: python
   files: ^assets/.*
@@ -20,7 +20,7 @@
   name: Check Filename Format
   description: |-
     Check whether file and directory names follow the specified format (^[\\.a-z0-9 _-]{1,64}$)
-  entry: python ./scripts/check_filename_format.py
+  entry: check_filename_format.py
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   language: python
   files: ^assets/.*
@@ -31,7 +31,7 @@
   name: Check Filename match URI
   description: |-
     Checks whether the name of each TTL or oas3.yaml file matches the final part of its relative URI
-  entry: python ./scripts/check_filename_match_uri.py
+  entry: check_filename_match_uri
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   language: python
   files: ^assets/.*
@@ -43,7 +43,7 @@
   name: Check Filename match Directories
   description: |-
     Check if filenames match the containing directory names
-  entry: python ./scripts/check_filenames_match_directories.py
+  entry: check_filenames_match_directories
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   language: python
   files: ^assets/.*
@@ -52,7 +52,7 @@
 
 - id: check-supported-files
   name: Check encoding and file suffix
-  entry: python ./scripts/check_supported_files.py
+  entry: check_supported_files
   description: |-
     Checks the leaf directories of the specified root directories 
     to ensure that each leaf directory contains at least one .ttl file in UTF-8 format.
@@ -64,7 +64,7 @@
 
 - id: check-versioning-pattern
   name: Check versioning pattern
-  entry: python ./scripts/check_versioning_pattern.py
+  entry: check_versioning_pattern
   description: |-
     Check if the versioning pattern is correct for leaf directories
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
