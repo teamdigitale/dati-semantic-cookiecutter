@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 from rdflib import Graph, RDF, RDFS, OWL, SKOS, Namespace
 
-def extract_main_uri(ttl_file):
+def extract_main_uri(ttl_file,root_dir):
     """
     Extracts the main URI relative to the specified TTL file.
 
@@ -19,8 +19,9 @@ def extract_main_uri(ttl_file):
     dcatapit = Namespace("http://dati.gov.it/onto/dcatapit#")
 
     main_uri = None
+
     for s, p, o in g:
-        if (s, RDF.type, OWL.Ontology) in g:
+        if (s, RDF.type, OWL.Ontology) in g and "onto" in root_dir.lower():
             main_uri = s
             break
         elif p == RDF.type and o == dcatapit.Dataset:
@@ -50,7 +51,7 @@ def check_filename_match_uri(root_dirs):
     for root_dir in root_dirs:
         for file_path in Path(root_dir).rglob("*.ttl"):
             filename = file_path.stem  # File name without extension
-            uri = extract_main_uri(str(file_path))  # Main relative URI of the file
+            uri = extract_main_uri(str(file_path), root_dir)  # Main relative URI of the file
 
             if uri:
                 # Extract the final part of the URI
