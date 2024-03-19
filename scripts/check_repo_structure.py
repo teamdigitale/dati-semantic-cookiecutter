@@ -17,7 +17,10 @@ def check_structure(required_dirs):
 
     return True
 
-if __name__ == "__main__":
+def main():
     required_dirs = sys.argv[1:]  # Read dir args
     if not check_structure(required_dirs):
         exit(1)
+
+if __name__ == "__main__":
+    main()
