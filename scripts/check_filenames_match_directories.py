@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import os
 import sys
 
@@ -51,7 +50,11 @@ def check_filenames_match_directories(root_dirs):
 
     return True
 
-if __name__ == "__main__":
+def main():
     root_dirs = sys.argv[1:]  # Read dir args
     if not check_filenames_match_directories(root_dirs):
         exit(1)
+
+if __name__ == "__main__":
+    main()
+

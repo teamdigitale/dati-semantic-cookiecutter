@@ -47,7 +47,10 @@ def check_versioning_pattern(root_dirs):
     return not errors
 
 
-if __name__ == "__main__":
-    root_dirs = sys.argv[1:]  # Read directory arguments from command line
+def main():
+    root_dirs = sys.argv[1:]  # Read args
     if not check_versioning_pattern(root_dirs):
         exit(1)
+
+if __name__ == "__main__":
+    main()

@@ -18,8 +18,11 @@ setup(
     entry_points={
         "console_scripts": [
             "check_repo_structure = scripts.check_repo_structure:main",
+            "check_filename_format = scripts.check_filename_format:main",
+            "check_filename_match_uri = scripts.check_filename_match_uri:main",
+            "check_filenames_match_directories = scripts.check_filenames_match_directories:main",
+            "check_supported_files = scripts.check_supported_files:main",
+            "check_versioning_pattern = scripts.check_versioning_pattern:main",
         ]
     },
-#    include_package_data=True,
-#    package_data={"": ["scripts/*.py"]},
 )

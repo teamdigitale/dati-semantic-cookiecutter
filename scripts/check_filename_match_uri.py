@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import sys
 from pathlib import Path
 from rdflib import Graph, RDF, RDFS, OWL, SKOS, Namespace
@@ -73,7 +72,8 @@ def check_filename_match_uri(root_dirs):
 
     return mismatches
 
-if __name__ == "__main__":
+
+def main():
     root_dirs = sys.argv[1:] 
     mismatches = check_filename_match_uri(root_dirs)
 
@@ -84,3 +84,7 @@ if __name__ == "__main__":
         exit(1)
     else:
         print("All files match their relative URI.")
+
+if __name__ == "__main__":
+    main()
+

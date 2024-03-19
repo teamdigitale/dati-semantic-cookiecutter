@@ -67,7 +67,10 @@ def check_supported_files(root_dirs):
 
     return True
 
-if __name__ == "__main__":
+def main():
     root_dirs = sys.argv[1:]
     if not check_supported_files(root_dirs):
         exit(1)
+
+if __name__ == "__main__":
+    main()

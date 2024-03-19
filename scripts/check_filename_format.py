@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import os
 import re
 import sys
@@ -31,7 +30,12 @@ def check_filename_format(root_dirs):
 
     return True
 
-if __name__ == "__main__":
+
+
+def main():
     root_dirs = sys.argv[1:]  # Read dir args
     if not check_filename_format(root_dirs):
         exit(1)
+
+if __name__ == "__main__":
+    main()
