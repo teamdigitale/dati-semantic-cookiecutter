@@ -57,6 +57,8 @@ def check_filename_match_uri(root_dirs):
                 # Extract the final part of the URI
                 uri_parts = str(uri).split("/")
                 last_uri_part = uri_parts[-1]
+                if last_uri_part == '':
+                    last_uri_part = uri_parts[-2]                
 
                 # Check if the root directory contains "schema"
                 if "schema" in root_dir.lower():
