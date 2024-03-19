@@ -9,7 +9,7 @@
     - assets/ontologies/*
     - assets/controlled-vocabularies/*
     - assets/schemas/*
-  entry: scripts/check_repo_structure.py
+  entry: check_repo_structure
   args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   language: python
   files: ^assets/.*
