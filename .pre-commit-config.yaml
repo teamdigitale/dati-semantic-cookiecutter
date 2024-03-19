@@ -3,12 +3,17 @@ repos:
   rev: 4f268eddac182d59e3da44c5577ec466764bb340
   hooks:
   - id: check-repo-structure
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   - id: check-filename-format
-    args: ["assets/controlled-vocabularies/"] #, "assets/ontologies/", "assets/schemas/"]
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   - id: check-filenames-match-uri
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   - id: check-filenames-match-directories
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   - id: check-supported-files
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
   - id: check-versioning-pattern
+    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
 
 #
 # Semantic checks.
