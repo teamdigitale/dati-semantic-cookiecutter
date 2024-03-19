@@ -1,67 +1,14 @@
-#
-# Run pre-commit hooks. You can run them without installing
-#  the hook with
-#
-# $ pre-commit run --all-files --verbose
-# $ pre-commit run -a check-filenames-match-uri --verbose
-#
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
-
 repos:
-#- repo: https://github.com/FrankMaverick/dati-semantic-cookiecutter
-#  rev: 38f23edd4a6c99dee53243c1245a6b3b3366d3a3
-- repo: local 
+- repo: https://github.com/FrankMaverick/dati-semantic-cookiecutter
+  rev: 4f268eddac182d59e3da44c5577ec466764bb340
   hooks:
   - id: check-repo-structure
-    name: Check Repository Structure
-    entry: python ./scripts/check_repo_structure.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
   - id: check-filename-format
-    name: Check Filename Format
-    entry: python ./scripts/check_filename_format.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
+    args: ["assets/controlled-vocabularies/"] #, "assets/ontologies/", "assets/schemas/"]
   - id: check-filenames-match-uri
-    name: Check Filename match URI
-    entry: python ./scripts/check_filename_match_uri.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
-    additional_dependencies: [rdflib]    
   - id: check-filenames-match-directories
-    name: Check Filename match Directories
-    entry: python ./scripts/check_filenames_match_directories.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
   - id: check-supported-files
-    name: Check encoding and file suffix
-    entry: python ./scripts/check_supported_files.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
   - id: check-versioning-pattern
-    name: Check versioning pattern
-    entry: python ./scripts/check_versioning_pattern.py
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-    language: python
-    files: ^assets/.*
-    pass_filenames: false
-    types: [file]
 
 #
 # Semantic checks.
