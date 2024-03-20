@@ -19,6 +19,11 @@ def check_structure(required_dirs):
 
 def main():
     required_dirs = sys.argv[1:]  # Read dir args
+
+    if not required_dirs:
+        print("No root directories provided.")
+        exit(1)
+
     if not check_structure(required_dirs):
         exit(1)
 

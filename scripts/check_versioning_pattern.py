@@ -46,9 +46,20 @@ def check_versioning_pattern(root_dirs):
 
     return not errors
 
+def check_directory_existence(root_dirs):
+    for root_dir in root_dirs:
+        if not os.path.exists(root_dir):
+            print(f"WARNING: {root_dir} does not exist")
 
 def main():
     root_dirs = sys.argv[1:]  # Read args
+
+    if not root_dirs:
+        print("No root directories provided.")
+        exit(1)
+        
+    check_directory_existence(root_dirs)
+
     if not check_versioning_pattern(root_dirs):
         exit(1)
 

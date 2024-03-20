@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+import os
 import sys
 from pathlib import Path
 
@@ -67,8 +67,20 @@ def check_supported_files(root_dirs):
 
     return True
 
+def check_directory_existence(root_dirs):
+    for root_dir in root_dirs:
+        if not os.path.exists(root_dir):
+            print(f"WARNING: {root_dir} does not exist")
+
 def main():
     root_dirs = sys.argv[1:]
+
+    if not root_dirs:
+        print("No root directories provided.")
+        exit(1)
+        
+    check_directory_existence(root_dirs)
+
     if not check_supported_files(root_dirs):
         exit(1)
 

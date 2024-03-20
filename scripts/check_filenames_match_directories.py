@@ -50,8 +50,20 @@ def check_filenames_match_directories(root_dirs):
 
     return True
 
+def check_directory_existence(root_dirs):
+    for root_dir in root_dirs:
+        if not os.path.exists(root_dir):
+            print(f"WARNING: {root_dir} does not exist")
+
 def main():
     root_dirs = sys.argv[1:]  # Read dir args
+
+    if not root_dirs:
+        print("No root directories provided.")
+        exit(1)
+        
+    check_directory_existence(root_dirs)
+
     if not check_filenames_match_directories(root_dirs):
         exit(1)
 
