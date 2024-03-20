@@ -23,12 +23,32 @@ For readability:
   and are either used for testing or for developing and validating what's in assets/.
 
 
-## Development
+## Automated Checks and Testing
 
-This repository uses pre-commit to validate content.
-An integrated testing environment to reproduce the CI pipeline
-is available via docker-compose, which goes on thru a set of steps.
+Below are described the procedures for automated checks and testing implemented, essential for ensuring the quality and integrity of the repository content.
+
+### Automated Checks (Pre-commit)
+
+This repository implements automated checks using [pre-commit](https://pre-commit.com/). The specifications of the checks are defined in the file [`.pre-commit-config.yaml`](.pre-commit-config.yaml).
+
+These checks can be executed using GitHub Actions. The `validate.yaml` file in `.github/workflows` automatically enables pre-commit checks after each push or pull request (PR). Additionally, these checks can be manually activated at any time.
+
+To enable pre-commit checks in another repository, simply copy the [`.pre-commit-config.yaml`](.pre-commit-config.yaml) file and the [`.github/workflows/validate.yaml`](.github/workflows/validate.yaml) file.
+
+### URL Testing
+
+In the `tests` directory, there is a script named `test_urls.py`, which verifies GitHub-related URLs present in the files of the `assets` subdirectories.
+
+This test can also be automated using GitHub Actions. The `test.yaml` file in `.github/workflows` automatically activates tests after each push or pull request. Similarly, these tests can be manually initiated at any time.
+
+To enable URL testing in another repository, simply copy the [`/tests/test_urls.py`](/tests/test_urls.py) file and the [`.github/workflows/test.yaml`](.github/workflows/test.yaml) file.
+
+### Local Checks and Testing
+
+Local checks and testing can be performed using Docker or simply Python. An integrated test environment to reproduce the CI pipeline is available through `docker-compose`, which executes a series of steps.
 
 ```bash
 docker-compose -f docker-compose-test.yml up
 ```
+
+Note: If you wish to transfer this environment to another repository, it's important to note that the Docker environment requires the Dockerfiles present in the tests directory (such as Dockerfile.precommit and Dockerfile.pytest).
