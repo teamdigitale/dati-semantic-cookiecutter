@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+from directory_existence_checker import check_directory_existence
 
 def check_filename_format(root_dirs):
     """
@@ -30,10 +31,6 @@ def check_filename_format(root_dirs):
 
     return True
 
-def check_directory_existence(root_dirs):
-    for root_dir in root_dirs:
-        if not os.path.exists(root_dir):
-            print(f"WARNING: {root_dir} does not exist")
 
 def main():
     root_dirs = sys.argv[1:]  # Read dir args
@@ -42,7 +39,8 @@ def main():
         print("No root directories provided.")
         exit(1)
         
-    check_directory_existence(root_dirs)
+    if not check_directory_existence(root_dirs):
+        exit(0)
 
     if not check_filename_format(root_dirs):
         exit(1)

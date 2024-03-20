@@ -2,6 +2,8 @@ import sys
 import os
 from pathlib import Path
 from rdflib import Graph, RDF, RDFS, OWL, SKOS, Namespace
+from directory_existence_checker import check_directory_existence
+
 
 def extract_main_uri(ttl_file,root_dir):
     """
@@ -76,10 +78,6 @@ def check_filename_match_uri(root_dirs):
 
     return mismatches
 
-def check_directory_existence(root_dirs):
-    for root_dir in root_dirs:
-        if not os.path.exists(root_dir):
-            print(f"WARNING: {root_dir} does not exist")
 
 def main():
     root_dirs = sys.argv[1:] 
@@ -88,7 +86,8 @@ def main():
         print("No root directories provided.")
         exit(1)
         
-    check_directory_existence(root_dirs)
+    if not check_directory_existence(root_dirs):
+        exit(0)
 
     mismatches = check_filename_match_uri(root_dirs)
 
