@@ -33,7 +33,7 @@ def check_filename_format(root_dirs):
 def check_directory_existence(root_dirs):
     existing_dirs = [root_dir for root_dir in root_dirs if os.path.exists(root_dir)]
     if not existing_dirs:
-        print("(no files to check)Skipped")
+        print(f"{root_dirs} don't exist")
         return False
 
     for root_dir in existing_dirs:
@@ -48,7 +48,7 @@ def main():
         exit(1)
         
     if not check_directory_existence(root_dirs):
-        return
+        exit(1)
 
     if not check_filename_format(root_dirs):
         exit(1)
