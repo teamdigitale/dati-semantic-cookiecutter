@@ -43,19 +43,6 @@ come:
 
 
 
-## Sviluppo
-
-Questo repository utilizza [pre-commit](https://pre-commit.com/) per convalidare il contenuto dei file:
-le verifiche sono indicate in [.pre-commit-config.yaml](.pre-commit-config.yaml).
-
-Un ambiente di test integrato per riprodurre la pipeline CI
-è disponibile tramite docker-compose, che esegue una serie di passaggi.
-
-```bash
-docker-compose -f docker-compose-test.yml up
-```
-
-
 ## Controlli Automatici e Test
 
 Di seguito vengono descritte le procedure di controllo automatico e di test implementate, utili per garantire la qualità e l'integrità del contenuto del repository
