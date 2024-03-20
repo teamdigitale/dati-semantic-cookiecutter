@@ -48,11 +48,15 @@ def check_versioning_pattern(root_dirs):
 
 def check_directory_existence(root_dirs):
     existing_dirs = [root_dir for root_dir in root_dirs if os.path.exists(root_dir)]
+
     if not existing_dirs:
         print(f"{root_dirs} don't exist")
         return False
+    
+    # Check if any directories don't exist
+    non_existent_dirs = [root_dir for root_dir in root_dirs if root_dir not in existing_dirs]
 
-    for root_dir in existing_dirs:
+    for root_dir in non_existent_dirs:
         print(f"WARNING: {root_dir} does not exist")
     return True
 
