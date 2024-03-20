@@ -48,7 +48,7 @@ def main():
         exit(1)
         
     if not check_directory_existence(root_dirs):
-        exit(0)
+        return
 
     if not check_filename_format(root_dirs):
         exit(1)
