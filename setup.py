@@ -23,6 +23,7 @@ setup(
             "check_filenames_match_directories = scripts.check_filenames_match_directories:main",
             "check_supported_files = scripts.check_supported_files:main",
             "check_versioning_pattern = scripts.check_versioning_pattern:main",
+            "directory_existence_checker = scripts.directory_existence_checker:check_directory_existence"
         ]
     },
 )
