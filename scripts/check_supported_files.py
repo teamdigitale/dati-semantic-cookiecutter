@@ -1,8 +1,6 @@
 import os
 import sys
 from pathlib import Path
-from directory_existence_checker import check_directory_existence
-
 
 """
 This script checks the leaf directories of the specified root directories to ensure that each leaf directory contains at least one .ttl file in UTF-8 format.
@@ -69,6 +67,15 @@ def check_supported_files(root_dirs):
 
     return True
 
+def check_directory_existence(root_dirs):
+    existing_dirs = [root_dir for root_dir in root_dirs if os.path.exists(root_dir)]
+    if not existing_dirs:
+        print("(no files to check)Skipped")
+        return False
+
+    for root_dir in existing_dirs:
+        print(f"WARNING: {root_dir} does not exist")
+    return True
 
 def main():
     root_dirs = sys.argv[1:]

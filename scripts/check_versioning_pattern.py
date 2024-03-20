@@ -2,7 +2,6 @@
 import sys
 import os
 import re
-from directory_existence_checker import check_directory_existence
 
 def check_versioning_pattern(root_dirs):
     """
@@ -47,6 +46,15 @@ def check_versioning_pattern(root_dirs):
 
     return not errors
 
+def check_directory_existence(root_dirs):
+    existing_dirs = [root_dir for root_dir in root_dirs if os.path.exists(root_dir)]
+    if not existing_dirs:
+        print("(no files to check)Skipped")
+        return False
+
+    for root_dir in existing_dirs:
+        print(f"WARNING: {root_dir} does not exist")
+    return True
 
 def main():
     root_dirs = sys.argv[1:]  # Read args
