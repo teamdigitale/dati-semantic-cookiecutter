@@ -4,7 +4,7 @@ import requests
 import time
 from pathlib import Path
 from urllib.parse import urlparse
-
+import pytest
 
 re_url = re.compile(r'[<"](https://github.*|https://raw.githubusercontent[^>"]*)[>"]')
 root_dirs = ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
@@ -19,7 +19,6 @@ def get_urls(root_dirs):
             for url in re_url.findall(file_path.read_text(encoding="utf8")):
                 urls.append((file_path, url.strip('<">'), root_dir))
     return urls
-
 
 def request_url(method, url):
     """
@@ -79,10 +78,15 @@ def check_repository_existence(url):
     else:
         return False
 
-
+@pytest.mark.skipif(all(not os.path.exists(root_dir) for root_dir in root_dirs), reason="No root directories found")
 def test_url():
     print("Starting URL test...")
     errors = []
+	
+	# Check if root_dir exist
+    for root_dir in root_dirs:
+        if not os.path.exists(root_dir):
+            print(f"WARNING: root directory '{root_dir}' does not exist.")
 
     for file_path, url, root_dir in get_urls(root_dirs):
         print(f"Testing URL: {url}")
@@ -107,5 +111,6 @@ def test_url():
         for error in errors:
             print(error)
         assert False, "\n".join(errors)
-    else:
-        print("URL test completed successfully!")
+
+# Run test
+test_url()
