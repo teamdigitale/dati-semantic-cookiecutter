@@ -1,6 +1,6 @@
 repos:
-- repo: https://github.com/FrankMaverick/dati-semantic-cookiecutter
-  rev: 4f268eddac182d59e3da44c5577ec466764bb340
+- repo: https://github.com/teamdigitale/dati-semantic-cookiecutter
+  rev: 931e0529c8839f6fa8c1ae315839ba7c3060c5f2
   hooks:
   - id: check-repo-structure
     args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
