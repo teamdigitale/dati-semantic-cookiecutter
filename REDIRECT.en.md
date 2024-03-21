@@ -55,7 +55,7 @@ The redirect rules associated with each uri MUST be defined in the relevant `.ht
 
 ### 3. creating the pull request
 
-Once the GIT repository has been modified locally, a pull request MUST be created, which will be analyzed and possibly validated by "Italia"; in the pull request the contacts present in the [README.md file under “/italia”](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md) MUST be indicated as reviewers.
+Once the GIT repository has been modified locally, a pull request MUST be created, which will be analyzed and possibly validated by "Italia"; in the pull request the contacts present in the [README.md file under `/italia`](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md) MUST be indicated as reviewers.
 The merge on the master branch will be carried out directly from w3id.org and will determine the definitive publication of the new URIs and related redirect rules.
 
 ## Contents of htaccess and README.md files
