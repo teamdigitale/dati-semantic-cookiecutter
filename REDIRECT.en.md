@@ -35,7 +35,7 @@ In the local repository created starting from the fork, it will be necessary to 
 
 Below is an example of a folder tree under `/italia`:
 
-<pre>
+```
 italia
 |--folder-name
 |   |--controlled-vocabulary
@@ -45,12 +45,12 @@ italia
 |   |--onto
 |   |   |-.htaccess
 |   |README.md
-</pre>
+```
 
 This will define the following URIs:
--	`w3id.org/italia/<folder-name>/controlled-vocabulary`
--	`w3id.org/italia/<folder-name>/data`
--	`w3id.org/italia/<folder-name>/onto`
+-	`https://w3id.org/italia/<folder-name>/controlled-vocabulary`
+-	`https://w3id.org/italia/<folder-name>/data`
+-	`https://w3id.org/italia/<folder-name>/onto`
 
 The `<folder-name>` is very important as it MUST be placed in specific parameters described later in this document, and will always be used to refer to the Contributor's set of semantic resources as part of the redirect file configuration.
 
@@ -73,46 +73,54 @@ It contains code written based on Apache Directives, and allows you to manage HT
 
 Below is a description of the example directives, to which the references of the landing URLs MUST be modified, in addition to any modification/integration of the rules in order to better adapt to the Contributor's git:
 
-<pre>
+```
 Header set Access-Control-Allow-Origin *
-</pre>
+```
+
 This line sets the Access-Control-Allow-Origin header to *, allowing any domain to access resources on the server via Ajax requests or from other different domains.
 
-<pre>
+```
 Options +FollowSymLinks
-</pre>
+```
+
 This line enables the FollowSymLinks option, which allows the server to follow symbolic links (symlinks) within the file system.
 
-<pre>
+```
 RewriteEngine on
-</pre>
+```
+
 This line activates Apache's URL rewriting engine (mod_rewrite), which allows you to manipulate the URLs of HTTP requests.
 
-<pre>
+```
 SetEnvIf Accept ^.*text/turtle.* SYNTAX=ttl
 SetEnvIf Accept ^.*application/json.* SYNTAX=json
 SetEnvIf Accept ^.*application/csv.* SYNTAX=csv
 SetEnvIf Accept ^.*text/csv.* SYNTAX=csv
 SetEnvIf Accept ^.*text/html.* SYNTAX=html
-</pre>
+```
+
 These lines set an environment variable called SYNTAX based on the Accept header of the HTTP request. This is used to determine the type of syntax required in the response. These lines MUST be modified depending on the file formats present in your github folders.
 
-<pre>
+```
 SetEnvIf Request_URI ^.*$ ROOT_URL="url-git"
-</pre>
+```
+
 Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the controlled vocabularies folder (in the format `https://raw.githubusercontent.com/...`)
 
-<pre>
+
+```
 RewriteCond %{ENV:SYNTAX} ^(ttl|json|csv)$
 RewriteRule ^([a-zA-Z-_0-9]+)(/?)$ %{ENV:ROOT_URL}$1/latest/$1.%{ENV:SYNTAX} [R=303,L]
-</pre>
+```
+
 Defines the URL rewriting rule if the requested file type is ttl, json or csv ( types MUST be configured based on the file types present in the source repository).
 
-<pre>
+```
 RewriteCond %{ENV:SYNTAX} ^html$
 RewriteRule ^(.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/controlled-vocabulary/$1 [R=303,L]
 RewriteRule ^(.+)/(.+)/(.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/controlled-vocabulary/$1/$2/$3 [R=303,L]
-</pre>
+```
+
 The previous conditions apply only when SYNTAX is html, or in all other cases not managed by the previous conditions. They rewrite URLs differently, redirecting to external URLs based on specific patterns. They MUST be configured based on the name of the thematic folder which refers to the particular set of semantic resources in the w3id's git.
 
 ### onto
@@ -123,49 +131,56 @@ It contains code written based on Apache Directives, and allows you to manage HT
 
 Below is a description of the example directives, to which the landing URL references MUST be modified, in addition to any modification/integration of the rules in order to better adapt to the Contributor's git:
 
-<pre>
+```
 Header set Access-Control-Allow-Origin *
-</pre>
+```
+
 This line sets the Access-Control-Allow-Origin header to *, allowing any domain to access resources on the server via Ajax requests or from other different domains.
 
-<pre>
+```
 Options +FollowSymLinks
-</pre>
+```
+
 This line enables the FollowSymLinks option, which allows the server to follow symbolic links (symlinks) within the file system.
 
-<pre>
+```
 RewriteEngine on
-</pre>
+```
+
 This line activates Apache's URL rewriting engine (mod_rewrite), which allows you to manipulate the URLs of HTTP requests.
 
-<pre>
+```
 SetEnvIf Accept ^.*application/rdf\+xml.* SYNTAX=rdf
 SetEnvIf Accept ^.*application/rdf\+xml.* SYNTAX=owl
 SetEnvIf Accept ^.*application/n-triples.* SYNTAX=n3
 SetEnvIf Accept ^.*text/turtle.* SYNTAX=ttl
 SetEnvIf Accept ^.*text/html.* SYNTAX=html
-</pre>
+```
+
 These lines set an environment variable called SYNTAX based on the Accept header of the HTTP request. This is used to determine the type of syntax required in the response. These lines MUST be modified according to the file formats present in your folders in the semantic resources repository.
 
-<pre>
+```
 SetEnvIf Request_URI ^.*$ ROOT_URL="url-git"
-</pre>
+```
+
 Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the ontologies folder (in the format `https://raw.githubusercontent.com/...`)
 
-<pre>
+```
 RewriteCond %{ENV:SYNTAX} ^(rdf|ttl|owl|n3)$
 RewriteRule ^([a-zA-Z-_0-9]+)(/?)$ %{ENV:ROOT_URL}$1/latest/$1.%{ENV:SYNTAX} [R=303,L]
-</pre>
+```
+
 Defines the URL rewriting rule if the requested file type is rdf, ttl, own or n3 (file types MUST be configured based on the file types present in the source repository).
 
-<pre>
+```
 RewriteCond %{ENV:SYNTAX} ^html$
 RewriteRule ^(.+)(/.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/onto/$1$2 [R=303,L]
 RewriteCond %{ENV:SYNTAX} ^html$
 RewriteRule ^(.+)/$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/{{nome-cartella}}/onto/$1 [R=303,L]
 RewriteCond %{ENV:SYNTAX} ^html$
 RewriteRule ^(.+)$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/{{nome-cartella}}/onto/$1 [R=303,L]
-</pre>
+```
+
 The above conditions apply only when SYNTAX is html. They rewrite URLs differently, redirecting to external URLs based on specific patterns. They MUST be configured based on the name of the thematic folder which refers to the particular set of semantic resources in the w3id's git.
 
 ### data
@@ -176,35 +191,41 @@ It contains code written based on the Apache Directives, and allows you to confi
 
 Below is a description of the example directives, to which the landing URL references MUST be modified, in addition to any modification/integration of the rules in order to better adapt to the Contributor's git:
 
-<pre>
+```
 Header set Access-Control-Allow-Origin *
-</pre>
+```
+
 This line sets the Access-Control-Allow-Origin header to *, allowing any domain to access resources on the server via Ajax requests or from other different domains.
 
-<pre>
+```
 Options +FollowSymLinks
-</pre>
+```
+
 Questa riga abilita l'opzione FollowSymLinks, che permette al server di seguire i collegamenti simbolici (symlink) all'interno del file system.
 
-<pre>
+```
 RewriteEngine on
-</pre>
+```
+
 This line enables the FollowSymLinks option, which allows the server to follow symbolic links (symlinks) within the file system.
 
-<pre>
+```
 SetEnvIf Request_URI ^.*$ ROOT_URL=https://schema.gov.it/lodview/{{nome-cartella}}/data/
-</pre>
+```
+
 This line sets an environment variable called ROOT_URL, which MUST be changed based on the subject folder name
 which refers to your semantic resource repository on w3id.
 
-<pre>
+```
 RewriteRule ^(.*)$ %{ENV:ROOT_URL}$1 [R=303,L]
-</pre>
+```
+
 This line is a URL rewrite rule. Every request that comes to the server will be rewritten to include the value of ROOT_URL before the requested URI. The [R=303,L] flag indicates that the HTTP response will be a temporary redirect (status code 303) and that this is the last rule to be applied.
 
-<pre>
+```
 RewriteRule ^(.*)/$ %{ENV:ROOT_URL}$1 [R=303,L]
-</pre>
+```
+
 This is a similar rewrite rule to the previous one, but only applies to requests that end with a slash. Again, the response will be a temporary redirect with status code 303.
 
 ### README.md
