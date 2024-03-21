@@ -1,8 +1,11 @@
-# Guide to URI redirection
+# URI Redirection guide
 
 This document provides guidance for creating and publishing
 `htaccess` files that allow redirection of semantic resources 
-URIs using the w3id.
+URIs using the w3id. This guide is based on the 
+[w3id.org permanent identifiers guide](https://w3id.org/), and it is
+specialized on the redirect configuration of semantic assets' URIs 
+under the Italia domain.
 
 ## Requirements Notation
 
@@ -15,7 +18,7 @@ and only when, they appear in all capitals, as shown here.
 
 [w3id.org](https://w3id.org/) is a solution from the W3C Permanent Identifier Community Group that allows the addition or modification of permanent identifiers from which to redirect to specific URLs; the process is based on adding one or more folders in the [w3id git repository](https://github.com/perma-id/w3id.org), which MUST contain the `.htaccess` files and `README.md`, possibly organized into subfolders.
 
-In the case of the Catalogue, it is necessary to refer to the [Italy folder of the w3id GIT](https://github.com/perma-id/w3id.org/tree/master/italia), in which the subfolders MUST be added, each for a particular thematic area, which will contain the redirection files, possibly organized in further subfolders, and the `README.md` file. The addition of the `'/Italy'` subfolders will be subject to approval by the Italy Committee; subsequently, they will be managed independently and with direct interfacing between w3id.org and the contacts indicated in the `README.md`. The folder and its subfolders, `.htaccess` files, and `README.md` files MUST be created on the [w3id git repository](https://github.com/perma-id/w3id.org) by the Contributor.
+In the case of the Catalogue, it is necessary to refer to the [Italy folder of the w3id GIT](https://github.com/perma-id/w3id.org/tree/master/italia), in which the subfolders MUST be added, each for a particular thematic area, which will contain the redirection files, possibly organized in further subfolders, and the `README.md` file. The addition of the `/Italy` subfolders will be subject to approval by the Italy Committee; subsequently, they will be managed independently and with direct interfacing between w3id.org and the contacts indicated in the `README.md`. The folder and its subfolders, `.htaccess` files, and `README.md` files MUST be created on the [w3id git repository](https://github.com/perma-id/w3id.org) by the Contributor.
 
 ## Publishing htaccess on w3id
 
@@ -24,13 +27,13 @@ In the case of the Catalogue, it is necessary to refer to the [Italy folder of t
 The first step for registering the redirects is the local fork of the
 [w3id GIT Italy folder](https://github.com/perma-id/w3id.org/tree/master/italia). The
 permanent identifiers (URI) will be defined based on the path in which the various `htaccess` files will be inserted.
-In this case, the path to the "root" folder for folder-name must be `"italia/<folder-name>/"`, therefore the namespace of the URIs defined in it will be `w3id.org/italia/<folder-name>/`.
+In this case, the path to the "root" folder for folder-name must be `italia/<folder-name>/`, therefore the namespace of the URIs defined in it will be `w3id.org/italia/<folder-name>/`.
 
 ### 2. adding the folder
 
 In the local repository created starting from the fork, it will be necessary to create the `folder-name` folder which will contain the tree of subfolders and the related `.htaccess` files, in addition to the `README.md`.
 
-Below is an example of a folder tree under `"/italia"`:
+Below is an example of a folder tree under `/italia`:
 
 <pre>
 italia
@@ -51,7 +54,7 @@ This will define the following URIs:
 
 The `<folder-name>` is very important as it MUST be placed in specific parameters described later in this document, and will always be used to refer to the Contributor's set of semantic resources as part of the redirect file configuration.
 
-The redirect rules associated with each uri MUST be defined in the relevant `.htaccess` files described below. The `README.md` file MUST contain the names of the contacts along with their email and github references. These references MUST take care of the management of the folder and related files following the approval of "Italia". You SHOULD take the `README.md` file under the `"/italia"` folder as an example.
+The redirect rules associated with each uri MUST be defined in the relevant `.htaccess` files described below. The `README.md` file MUST contain the names of the contacts along with their email and github references. These references MUST take care of the management of the folder and related files following the approval of "Italia". You SHOULD take the `README.md` file under the `/italia` folder as an example.
 
 ### 3. creating the pull request
 
@@ -64,7 +67,7 @@ Below is a description of the `.htaccess` file for each type of resource, from w
 
 ### controlled-vocabulary
 
-The `.htaccess` file to be inserted in the `“italia/name-folder/controlled-vocabulary”` subfolder SHOULD be created by taking as an example [the one contained in the GIT folder “italia/controlled-vocabulary”](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess).
+The `.htaccess` file to be inserted in the `italia/name-folder/controlled-vocabulary` subfolder SHOULD be created by taking as an example [the one contained in the GIT folder `italia/controlled-vocabulary`](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess).
 
 It contains code written based on Apache Directives, and allows you to manage HTTP requests based on the value of the Accept header and SYNTAX. Depending on the value, the URLs are rewritten differently or redirected to external URLs. The specific rewrite or redirect action depends on the combination of Accept and SYNTAX.
 
@@ -97,7 +100,7 @@ These lines set an environment variable called SYNTAX based on the Accept header
 <pre>
 SetEnvIf Request_URI ^.*$ ROOT_URL="url-git"
 </pre>
-Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the controlled vocabularies folder (in the format `"https://raw.githubusercontent.com/..."`)
+Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the controlled vocabularies folder (in the format `https://raw.githubusercontent.com/...`)
 
 <pre>
 RewriteCond %{ENV:SYNTAX} ^(ttl|json|csv)$
@@ -107,14 +110,14 @@ Defines the URL rewriting rule if the requested file type is ttl, json or csv ( 
 
 <pre>
 RewriteCond %{ENV:SYNTAX} ^html$
-RewriteRule ^(.+)$ https://schema.gov.it/lodview/"nome-cartella"/controlled-vocabulary/$1 [R=303,L]
-RewriteRule ^(.+)/(.+)/(.+)$ https://schema.gov.it/lodview/"nome-cartella"/controlled-vocabulary/$1/$2/$3 [R=303,L]
+RewriteRule ^(.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/controlled-vocabulary/$1 [R=303,L]
+RewriteRule ^(.+)/(.+)/(.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/controlled-vocabulary/$1/$2/$3 [R=303,L]
 </pre>
 The previous conditions apply only when SYNTAX is html, or in all other cases not managed by the previous conditions. They rewrite URLs differently, redirecting to external URLs based on specific patterns. They MUST be configured based on the name of the thematic folder which refers to the particular set of semantic resources in the w3id's git.
 
 ### onto
 
-The `.htaccess` file to be inserted in the “italia/foldername/onto” subfolder SHOULD be created starting from [the one contained in the “italia/onto” GIT folder](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess)
+The `.htaccess` file to be inserted in the `italia/foldername/onto` subfolder SHOULD be created starting from [the one contained in the `italia/onto` GIT folder](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess)
 
 It contains code written based on Apache Directives, and allows you to manage HTTP requests based on the value of the Accept header and SYNTAX. Depending on the value, the URLs are rewritten differently or redirected to external URLs. The specific rewrite or redirect action depends on the combination of Accept and SYNTAX.
 
@@ -147,7 +150,7 @@ These lines set an environment variable called SYNTAX based on the Accept header
 <pre>
 SetEnvIf Request_URI ^.*$ ROOT_URL="url-git"
 </pre>
-Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the ontologies folder (in the format `"https://raw.githubusercontent.com/..."`)
+Set the ROOT_URL environment variable with a fixed URL. The URL entered MUST be that of your repository pointing to the ontologies folder (in the format `https://raw.githubusercontent.com/...`)
 
 <pre>
 RewriteCond %{ENV:SYNTAX} ^(rdf|ttl|owl|n3)$
@@ -157,17 +160,17 @@ Defines the URL rewriting rule if the requested file type is rdf, ttl, own or n3
 
 <pre>
 RewriteCond %{ENV:SYNTAX} ^html$
-RewriteRule ^(.+)(/.+)$ https://schema.gov.it/lodview/"nome-cartella"/onto/$1$2 [R=303,L]
+RewriteRule ^(.+)(/.+)$ https://schema.gov.it/lodview/{{nome-cartella}}/onto/$1$2 [R=303,L]
 RewriteCond %{ENV:SYNTAX} ^html$
-RewriteRule ^(.+)/$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/"nome-cartella"/onto/$1 [R=303,L]
+RewriteRule ^(.+)/$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/{{nome-cartella}}/onto/$1 [R=303,L]
 RewriteCond %{ENV:SYNTAX} ^html$
-RewriteRule ^(.+)$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/"nome-cartella"/onto/$1 [R=303,L]
+RewriteRule ^(.+)$ https://schema.gov.it/lode/extract?url=https://w3id.org/italia/{{nome-cartella}}/onto/$1 [R=303,L]
 </pre>
 The above conditions apply only when SYNTAX is html. They rewrite URLs differently, redirecting to external URLs based on specific patterns. They MUST be configured based on the name of the thematic folder which refers to the particular set of semantic resources in the w3id's git.
 
 ### data
 
-The `.htaccess` file to be inserted in the “italia/folder-name/data” subfolder SHOULD be created starting from [the one contained in the “italia/data” GIT folder](https://github.com/perma-id/w3id.org/blob/master/italia/data/.htaccess).
+The `.htaccess` file to be inserted in the `italia/folder-name/data` subfolder SHOULD be created starting from [the one contained in the `italia/data` GIT folder](https://github.com/perma-id/w3id.org/blob/master/italia/data/.htaccess).
 
 It contains code written based on the Apache Directives, and allows you to configure the Apache server to allow access from any domain to the server's resources, set a ROOT_URL environment variable with a fixed value, and then rewrite all requests so that include ROOT_URL before the requested URI.
 
@@ -189,7 +192,7 @@ RewriteEngine on
 This line enables the FollowSymLinks option, which allows the server to follow symbolic links (symlinks) within the file system.
 
 <pre>
-SetEnvIf Request_URI ^.*$ ROOT_URL=https://schema.gov.it/lodview/"nome-cartella"/data/
+SetEnvIf Request_URI ^.*$ ROOT_URL=https://schema.gov.it/lodview/{{nome-cartella}}/data/
 </pre>
 This line sets an environment variable called ROOT_URL, which MUST be changed based on the subject folder name
 which refers to your semantic resource repository on w3id.
@@ -206,6 +209,6 @@ This is a similar rewrite rule to the previous one, but only applies to requests
 
 ### README.md
 
-To create the README.md file you MAY refer to the [example provided by w3id.org itself](https://github.com/perma-id/w3id.org/blob/master/dggs/README.md) , or to the [file created under the “/italia” folder](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md).
+To create the README.md file you MAY refer to the [example provided by w3id.org itself](https://github.com/perma-id/w3id.org/blob/master/dggs/README.md) , or to the [file created under the `/italia` folder](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md).
 
 In any case, you MUST describe the purpose of the URIs and insert the names of the contact persons in the "contacts" section.

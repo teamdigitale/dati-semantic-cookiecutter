@@ -29,7 +29,7 @@ Quelle supportate sono:
 Future versioni del NDC possono supportare altre risorse semantiche
 ed altri formati.
 
-## File richiesti e layout del repository
+## File richiesti e layout delle cartelle
 
 Il repository DEVE contenere i seguenti file:
 
