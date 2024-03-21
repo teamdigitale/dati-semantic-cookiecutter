@@ -1,10 +1,10 @@
 # URI Redirection guide
 
 This document provides guidance for creating and publishing
-`htaccess` files that allow redirection of semantic resources 
-URIs using the w3id. This guide is based on the 
+`htaccess` files that allow redirection of semantic resources
+URIs using the w3id. This guide is based on the
 [w3id.org permanent identifiers guide](https://w3id.org/), and it is
-specialized on the redirect configuration of semantic assets' URIs 
+specialized on the redirect configuration of semantic assets' URIs
 under the Italia domain.
 
 ## Requirements Notation
@@ -18,7 +18,9 @@ and only when, they appear in all capitals, as shown here.
 
 [w3id.org](https://w3id.org/) is a solution from the W3C Permanent Identifier Community Group that allows the addition or modification of permanent identifiers from which to redirect to specific URLs; the process is based on adding one or more folders in the [w3id git repository](https://github.com/perma-id/w3id.org), which MUST contain the `.htaccess` files and `README.md`, possibly organized into subfolders.
 
-In the case of the Catalogue, it is necessary to refer to the [Italy folder of the w3id GIT](https://github.com/perma-id/w3id.org/tree/master/italia), in which the subfolders MUST be added, each for a particular thematic area, which will contain the redirection files, possibly organized in further subfolders, and the `README.md` file. The addition of the `/Italy` subfolders will be subject to approval by the Italy Committee; subsequently, they will be managed independently and with direct interfacing between w3id.org and the contacts indicated in the `README.md`. The folder and its subfolders, `.htaccess` files, and `README.md` files MUST be created on the [w3id git repository](https://github.com/perma-id/w3id.org) by the Contributor.
+In the case of the Catalogue, it is necessary to refer to the [Italy folder of the w3id GIT](https://github.com/perma-id/w3id.org/tree/master/italia), in which the subfolders MUST be added, each for a particular thematic area, which will contain the redirection files, possibly organized in further subfolders, and the `README.md` file.
+The addition of the `italia/` subfolders will be subject to approval by the Italy Committee; subsequently, they will be managed independently and with direct interfacing between w3id.org and the contacts indicated in the `README.md`.
+The folder and its subfolders, `.htaccess` files, and `README.md` files MUST be created on the [w3id git repository](https://github.com/perma-id/w3id.org) by the Contributor.
 
 ## Publishing htaccess on w3id
 
@@ -27,7 +29,7 @@ In the case of the Catalogue, it is necessary to refer to the [Italy folder of t
 The first step for registering the redirects is the local fork of the
 [w3id GIT Italy folder](https://github.com/perma-id/w3id.org/tree/master/italia). The
 permanent identifiers (URI) will be defined based on the path in which the various `htaccess` files will be inserted.
-In this case, the path to the "root" folder for folder-name must be `italia/<folder-name>/`, therefore the namespace of the URIs defined in it will be `w3id.org/italia/<folder-name>/`.
+In this case, the path to the "root" folder for folder-name must be `italia/<folder-name>/`, therefore the namespace of the URIs defined in it will be `https://w3id.org/italia/<folder-name>/`.
 
 ### 2. adding the folder
 

@@ -2,9 +2,9 @@
 
 Questo documento fornisce una guida per la creazione e la pubblicazione
 dei file `htaccess` che permettono il redirect delle URI delle risorse
-semantiche utilizzando il w3id. La presente guida è basata sulla 
+semantiche utilizzando il w3id. La presente guida è basata sulla
 [guida ai permanent identifiers del w3id.org](https://w3id.org/), ed è
-specializzata sulla configurazione del redirect delle URI di risorse 
+specializzata sulla configurazione del redirect delle URI di risorse
 semantiche sotto il dominio "Italia".
 
 ## Terminologia
@@ -24,16 +24,17 @@ questo documento utilizza le parole chiave "DEVE", "DEVONO", "NON DEVE", "NON DE
 
 [w3id.org](https://w3id.org/) è una soluzione del W3C Permanent Identifier Community Group che permette l’aggiunta o modifica di identificativi permanenti a partire dai quali reindirizzare verso URL specifici; il processo si basa  sull’aggiunta di una o più cartelle nel [repository git del w3id](https://github.com/perma-id/w3id.org), le quali DEVONO contenere i file `.htaccess` e file `README.md`, eventualmente organizzati in sottocartelle.
 
-Nel caso del Catalogo, occorre fare riferimento alla [cartella Italia del GIT del w3id](https://github.com/perma-id/w3id.org/tree/master/italia), nella quale DEVONO essere aggiunte le sottocartelle, ciascuna per una particolare area tematica, che conterranno i file di reindirizzamento, eventualmente organizzati in ulteriori sottocartelle, ed il file `README.md`. L’aggiunta delle sottocartelle di `/Italia` sarà sottoposta ad approvazione del Comitato Italia; successivamente, le stesse saranno gestite autonomamente e con interfacciamento diretto verso w3id.org dai referenti indicati nei file `README.md`. La cartella e le relative sottocartelle, i  file `.htaccess` e i file `README.md` DEVONO essere creati sul [repository git del w3id](https://github.com/perma-id/w3id.org) dall'Organizzazione contributrice.
+Nel caso del Catalogo, occorre fare riferimento alla [cartella `italia` del git del w3id](https://github.com/perma-id/w3id.org/tree/master/italia), nella quale DEVONO essere aggiunte le sottocartelle, ciascuna per una particolare area tematica, che conterranno i file di reindirizzamento, eventualmente organizzati in ulteriori sottocartelle, ed il file `README.md`.
+L’aggiunta delle sottocartelle di `italia/` sarà sottoposta ad approvazione del Comitato Italia; successivamente, le stesse saranno gestite autonomamente e con interfacciamento diretto verso w3id.org dai referenti indicati nei file `README.md`. La cartella e le relative sottocartelle, i  file `.htaccess` e i file `README.md` DEVONO essere creati sul [repository git del w3id](https://github.com/perma-id/w3id.org) dall'Organizzazione contributrice.
 
 ## Processo di pubblicazione degli htaccess sul w3id
 
-### 1. fork del repository GIT del w3id.org
+### 1. fork del repository git del w3id.org
 
 Il primo passo per la registrazione dei vari redirect è il fork in locale della
-[cartella Italia del GIT del w3id](https://github.com/perma-id/w3id.org/tree/master/italia). Gli 
-identificativi permanenti (URI) verranno definiti sulla base del percorso nel quale saranno inseriti i vari file `htaccess`. Nel caso del Catalogo, il percorso della cartella “root” per nome-cartella dovrà essere 
-`italia/<nome-cartella>/`, dunque il namespace degli URI definiti nella stessa sarà 
+[cartella `italia` del git del w3id](https://github.com/perma-id/w3id.org/tree/master/italia). Gli
+identificativi permanenti (URI) verranno definiti sulla base del percorso nel quale saranno inseriti i vari file `htaccess`. Nel caso del Catalogo, il percorso della cartella `root` per nome-cartella dovrà essere
+`italia/<nome-cartella>/`, dunque il namespace degli URI definiti nella stessa sarà
 `w3id.org/italia/<nome-cartella>/`.
 
 ### 2. aggiunta della cartella
@@ -55,18 +56,19 @@ italia
 ```
 
 In tal modo, verranno definiti i seguenti URI:
--	`w3id.org/italia/<nome-cartella>/controlled-vocabulary`
--	`w3id.org/italia/<nome-cartella>/data`
--	`w3id.org/italia/<nome-cartella>/onto`
 
-Il `<nome-cartella>` è molto importante dato che DEVE essere inserito in specifici parametri descritti di seguito nel presente documento, 
+- `https://w3id.org/italia/<nome-cartella>/controlled-vocabulary`
+- `https://w3id.org/italia/<nome-cartella>/data`
+- `https://w3id.org/italia/<nome-cartella>/onto`
+
+Il `<nome-cartella>` è molto importante dato che DEVE essere inserito in specifici parametri descritti di seguito nel presente documento,
 e sarà sempre utilizzato per riferirsi all'insieme delle risorse semantiche del Contributore nell'ambito della configurazione dei file di redirect.
 
 Le regole di redirect associate a ciascun uri DEVONO essere definite nei relativi file `.htaccess` descritti di seguito. Il file `README.md` DEVE contenere i nominativi dei referenti unitamente ai loro riferimenti e-mail e di github. Questi riferimenti DEVONO curare la gestione della cartella e dei relativi file a seguito dell’approvazione di “Italia”. Si DOVREBBE prendere come esempio il file `README.md` sotto la cartella `/italia`.
 
 ### 3. creazione della pull request
 
-Una volta modificato il repository GIT in locale, si DEVE creare una pull request, la quale sarà analizzata ed eventualmente validata da "Italia"; nella pull request DEVONO essere indicati come reviewer i contatti presenti nel [file README.md sotto `/italia`](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md).
+Una volta modificato il repository git in locale, si DEVE creare una pull request, la quale sarà analizzata ed eventualmente validata da "Italia"; nella pull request DEVONO essere indicati come reviewer i contatti presenti nel [file README.md sotto `/italia`](https://github.com/perma-id/w3id.org/blob/master/italia/readme.md).
 Il merge sul branch master verrà effettuato direttamente da w3id.org e determinerà la pubblicazione definitiva dei nuovi URI e relative regole di redirect.
 
 ## Contenuto dei file .htaccess e del README.md
@@ -75,10 +77,10 @@ Di seguito è data una descrizione di file `.htaccess` per ciascuna tipologia di
 
 ### controlled-vocabulary
 
-Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/controlled-vocabulary` DOVREBBE essere creato a prendendo come esempio [quello contenuto nella cartella del GIT `italia/controlled-vocabulary`](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess).
+Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/controlled-vocabulary` DOVREBBE essere creato a prendendo come esempio [quello contenuto nella cartella del git `italia/controlled-vocabulary`](https://github.com/perma-id/w3id.org/blob/master/italia/controlled-vocabulary/.htaccess).
 
 Esso contiene codice scritto sulla base delle Direttive Apache, e permette di gestire le richieste HTTP in base al valore dell'header Accept e di SYNTAX. A seconda del valore, le URL vengono riscritte in modo diverso o reindirizzate a URL esterni. La specifica azione di riscrittura o reindirizzamento dipende dalla combinazione di Accept e SYNTAX.
- 
+
 Di seguito viene data una descrizione delle direttive di esempio, alle quali DEVONO essere modificati i riferimenti degli URL di atterraggio, oltre all’eventuale modifica/integrazione delle regole al fine di meglio adattarsi al git del Contributore:
 
 ```
@@ -132,7 +134,7 @@ Le precedenti condizioni si applicano solo quando SYNTAX è html, oppure in tutt
 
 ### onto
 
-Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/onto` DOVREBBE essere creato a partire da [quello contenuto nella cartella del GIT `italia/onto`](https://github.com/perma-id/w3id.org/blob/master/italia/onto/.htaccess).
+Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/onto` DOVREBBE essere creato a partire da [quello contenuto nella cartella del git `italia/onto`](https://github.com/perma-id/w3id.org/blob/master/italia/onto/.htaccess).
 
 Esso contiene codice scritto sulla base delle Direttive Apache, e permette di gestire le richieste HTTP in base al valore dell'header Accept e di SYNTAX. A seconda del valore, le URL vengono riscritte in modo diverso o reindirizzate a URL esterni. La specifica azione di riscrittura o reindirizzamento dipende dalla combinazione di Accept e SYNTAX.
 
@@ -192,9 +194,9 @@ Le precedenti condizioni si applicano solo quando SYNTAX è html. Riscrivono le 
 
 ### data
 
-Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/data` DOVREBBE essere creato a partire da [quello contenuto nella cartella del GIT `italia/data`](https://github.com/perma-id/w3id.org/blob/master/italia/data/.htaccess).
+Il file `.htaccess` da inserire nella sottocartella `italia/nome-cartella/data` DOVREBBE essere creato a partire da [quello contenuto nella cartella del git `italia/data`](https://github.com/perma-id/w3id.org/blob/master/italia/data/.htaccess).
 
-Esso contiene codice scritto sulla base delle Direttive Apache, e permette di configurare il server Apache per consentire l'accesso da qualsiasi dominio alle risorse del server, impostare una variabile di ambiente ROOT_URL con un valore fisso, e quindi riscrivere tutte le richieste in modo che includano ROOT_URL prima dell'URI richiesto. 
+Esso contiene codice scritto sulla base delle Direttive Apache, e permette di configurare il server Apache per consentire l'accesso da qualsiasi dominio alle risorse del server, impostare una variabile di ambiente ROOT_URL con un valore fisso, e quindi riscrivere tutte le richieste in modo che includano ROOT_URL prima dell'URI richiesto.
 
 Di seguito viene data una descrizione delle direttive di esempio, alle quali DEVONO essere modificati i riferimenti degli URL di atterraggio, oltre all’eventuale modifica/integrazione delle regole al fine di meglio adattarsi al git del Contributore:
 
