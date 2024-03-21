@@ -32,7 +32,8 @@ the following pattern `[a-zA-Z0-9_-.]{,64}`.
 Spaces MUST not be used in files or directory names.
 Folders SHOULD be lowercase.
 
-The name of each file MUST match the name of the corresponding resource in the URI used to reference it. The names of the files in a directory MUST match the name of the directory that contains them, except for their extensions.
+The name of each file MUST match the name of the corresponding resource in the URI used to reference it.
+The names of the files in a directory MUST match the name of the directory that contains them, except for their extensions.
 
 In addition, `htaccess` files that define the redirect rules of the URIs MUST be created and published on the w3id repository, as described in [REDIRECT.md](REDIRECT.md).
 
