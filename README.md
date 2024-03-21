@@ -5,11 +5,11 @@ dal catalogo dei dati nazionali erogato su https://schema.gov.it.
 
 ## Layout e regole del repository
 
-Questa sezione descrive il l'alberatura generale di un
+Questa sezione descrive l'alberatura generale di un
 Repository semantico.
 Le regole di dettaglio sono in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Tutte le risorse semantiche sono nella cartella [asset](assets/),
+Tutte le risorse semantiche sono nella cartella [assets](assets/),
 Ogni tipo di risorsa (ad esempio ontologie, vocabolari controllati, schemi, ..)
 ha una sottocartella specifica.
 

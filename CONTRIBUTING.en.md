@@ -32,6 +32,11 @@ the following pattern `[a-zA-Z0-9_-.]{,64}`.
 Spaces MUST not be used in files or directory names.
 Folders SHOULD be lowercase.
 
+The name of each file MUST match the name of the corresponding resource in the URI used to reference it.
+The names of the files in a directory MUST match the name of the directory that contains them, except for their extensions.
+
+In addition, `htaccess` files that define the redirect rules of the URIs MUST be created and published on the w3id repository, as described in [REDIRECT.md](REDIRECT.md).
+
 Assets content MUST be encoded in UTF-8 or ASCII.
 
 Each asset MUST reside under its specific folder:
@@ -96,7 +101,7 @@ from the original files in `assets/`.
 ## Ontologies
 
 Published ontologies MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Ontologies MUST be published only in RDF/Turtle format
 (media-type `text/turtle`).
@@ -111,7 +116,7 @@ Those files will not be processed.
 ## Controlled Vocabularies
 
 Published controlled vocabularies MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Controlled Vocabularies MUST be published in RDF/Turtle format
 (media-type `text/turtle`).
@@ -128,7 +133,7 @@ File extension MUST be `.csv`.
 ## Schemas
 
 Published schemas MUST conform to the associated
-[National Guidelines]().
+National Guidelines.
 
 Schemas for OAS3 APIs MUST be published in OpenAPI3 format,
 embedded in the `#/components/schemas` section of the OAS file.
