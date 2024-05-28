@@ -69,8 +69,8 @@ al pattern `[A-ZA-Z0-9 _-.]{, 64}`.
 Gli spazi NON DEVONO essere utilizzati nei file o nei nomi delle directory.
 Le directory DEVONO essere in minuscolo.
 
-Il nome di ciascun file DEVE corrispondere al nome della relativa risorsa 
-nell'URI utilizzato per referenziarla. 
+Il nome di ciascun file DEVE corrispondere al nome della relativa risorsa
+nell'URI utilizzato per referenziarla.
 I nomi dei file di una directory DEVONO corrispondere al nome della directory
 che li contiene, a meno dell'estensione degli stessi.
 
