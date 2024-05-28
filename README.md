@@ -1,13 +1,16 @@
 # Modello di repository per risorse semantiche
 
 Questo è un repository template per le risorse semantiche da raccogliere
-dal catalogo dei dati nazionali erogato su https://schema.gov.it.
+dal Catalogo Nazionale Dati per l'interoperabilità erogato su https://schema.gov.it.
+
+Per reperire ulteriori informazioni sul Catalogo, 
+sulle modalità di fruizione del portale schema.gov.it e sulla contribuzione
+all'alimentazione dello stesso, fai riferimento alla 
+[guida dedicata](https://teamdigitale.github.io/dati-semantic-guida-ndc-docs/).
 
 ## Layout e regole del repository
 
-Questa sezione descrive l'alberatura generale di un
-Repository semantico.
-Le regole di dettaglio sono in [CONTRIBUTING.md](CONTRIBUTING.md).
+Questa sezione descrive l'alberatura generale di un Repository semantico.
 
 Tutte le risorse semantiche sono nella cartella [assets](assets/),
 Ogni tipo di risorsa (ad esempio ontologie, vocabolari controllati, schemi, ..)
@@ -41,6 +44,10 @@ come:
 - ulteriori dataset o schemi di dati;
 - immagini e software.
 
+Per approfondire il tema del layout del repository, il contenuto richiesto, 
+il versionamento delle risorse, e per poter consultare alcuni esempi utili,
+fai riferimento alla
+[sezione dedicata nel Manuale Operativo del Catalogo](https://teamdigitale.github.io/dati-semantic-guida-ndc-docs/docs/manuale-operativo/istruzioni-su-come-predisporre-il-repository-in-cui-pubblicare-le-risorse-semantiche.html).
 
 
 ## Controlli Automatici e Test

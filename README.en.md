@@ -3,12 +3,14 @@
 This is a template repository for semantic assets to be harvested
 by the National Data Catalog at https://schema.gov.it.
 
+For further information on the Catalog, on how to use the portal 
+schema.gov.it, and on contributing to its content, please refer 
+to the [dedicated guide](https://teamdigitale.github.io/dati-semantic-guida-ndc-docs/).
+
 ## Repository layout and rules
 
 This section describes the general layout of a semantic
 repository.
-For a detailed set of rules regarding this repository
-see CONTRIBUTION.md.
 
 All semantic assets are in the [assets](assets/) folder,
 each asset type (e.g. ontologies, controlled vocabularies, schemas, ..)
@@ -21,6 +23,11 @@ For readability:
 - all semantic assets to be harvested/published are in assets/;
   files outside this directory should be safely ignored by other entities
   and are either used for testing or for developing and validating what's in assets/.
+
+To delve deeper into the topic of the repository layout, the required content, 
+the versioning of resources, and to consult some useful examples, please refer 
+to the 
+[dedicated section in the Operational Manual of the Catalog](https://teamdigitale.github.io/dati-semantic-guida-ndc-docs/docs/manuale-operativo/istruzioni-su-come-predisporre-il-repository-in-cui-pubblicare-le-risorse-semantiche.html).
 
 
 ## Automated Checks and Testing
