@@ -1,38 +1,99 @@
-repos:
-- repo: https://github.com/teamdigitale/dati-semantic-cookiecutter
-  rev: 931e0529c8839f6fa8c1ae315839ba7c3060c5f2
-  hooks:
-  - id: check-repo-structure
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-  - id: check-filename-format
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-  - id: check-filenames-match-uri
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-  - id: check-filenames-match-directories
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-  - id: check-supported-files
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
-  - id: check-versioning-pattern
-    args: ["assets/controlled-vocabularies/", "assets/ontologies/", "assets/schemas/"]
+#
+# Run pre-commit hooks. You can run them without installing
+#  the hook with
+#
+# $ pre-commit run --all-files
+#
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+#
+# Python code checks
+# If you don't have Python code to check, 
+# you can leave these hooks commented out
+#
+# repos:
+# -   repo: https://github.com/pre-commit/pre-commit-hooks
+#     rev: v4.6.0
+#     hooks:
+#     -   id: trailing-whitespace
+#     -   id: end-of-file-fixer
+#     -   id: check-yaml
+#         args: [--allow-multiple-documents]
+#     -   id: check-added-large-files
+#         args:
+#         - "--maxkb=4000"
+# - repo: https://github.com/myint/autoflake
+#   rev: v2.3.1
+#   hooks:
+#     - id: autoflake
+#       args:
+#         - --in-place
+#         - --remove-unused-variables
+#         - --remove-all-unused-imports
+# -   repo: https://github.com/psf/black
+#     rev: 24.4.2
+#     hooks:
+#     -   id: black
+# - repo: https://github.com/pycqa/isort
+#   rev: 5.12.0
+#   hooks:
+#     - id: isort
+#       name: isort (python)
+#       args: ["--profile", "black"]
+#     - id: isort
+#       name: isort (cython)
+#       types: [cython]
+#     - id: isort
+#       name: isort (pyi)
+#       types: [pyi]
+# - repo: https://github.com/PyCQA/flake8
+#   rev: 7.0.0
+#   hooks:
+#   - id: flake8
+# - repo: https://github.com/PyCQA/bandit
+#   rev: 1.7.8
+#   hooks:
+#     - id: bandit
+#       name: bandit
+#       args: ["-c", ".bandit.yaml"]
+#       description: 'Bandit is a tool for finding common security issues in Python code'
+#       entry: bandit
+#       language: python
+#       language_version: python3
+#       types: [python]
+# - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+#   rev: v1.3.3
+#   hooks:
+#     - id: python-safety-dependencies-check
 
 #
 # Semantic checks.
 #
-- repo: https://github.com/teamdigitale/json-semantic-playground
-  rev: 0b4ad4cc883a49878fdfd4539e694ae56b041e29
+- repo: https://github.com/teamdigitale/dati-semantic-tools
+  rev: c2074cd9c90dc1751f5535459afc3da6d21ab60d
   hooks:
-  - id: validate-csv
-    files: >-
-      ^assets\/controlled-vocabularies/.*\.csv
-  - id: validate-oas-schema
-    files: >-
-      ^assets\/schemas\/.*.oas3.yaml
-  - id: validate-turtle
-    files: >-
-      ^assets\/ontologies\/[^\/]+\/latest\/.*\.ttl
-  - id: validate-turtle
-    files: >-
-      ^assets\/controlled-vocabularies\/.*\.ttl
-  - id: validate-turtle
-    files: >-
-      ^assets\/schemas\/.*\.ttl
+    - id: validate-repo-structure
+      files: ^assets\/.*
+    - id: validate-filename-format
+      files: ^assets\/.*
+    - id: validate-filename-match-uri
+      files: ^assets\/.*\.ttl
+    - id: validate-filename-match-directory
+      files: ^assets\/.*
+    - id: validate-directory-versioning-pattern
+      files: ^assets\/.*\.ttl
+    - id: validate-mandatory-files-presence
+      files: ^assets\/.*
+    - id: validate-utf8-file-encoding
+      files: ^assets\/.*
+    - id: validate-turtle
+      files: ^assets/.*\.ttl$
+    - id: validate-oas-schema
+      files: ^assets/.*\.schema.yaml
+    - id: validate-openapi-schema
+      files: ^assets/.*\.oas3.yaml
+    - id: validate-directory-versioning
+      files: ^assets/.*\.ttl
+    - id: validate-csv
+      files: ^assets/.*\.csv      
