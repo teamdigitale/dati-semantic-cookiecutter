@@ -50,6 +50,8 @@ To enable pre-commit checks in another repository,
 copy the [`.pre-commit-config.yaml`](.pre-commit-config.yaml) file 
 and the [`.github/workflows/validate.yaml`](.github/workflows/validate.yaml) file.
 
+Note: It is possible to comment on checks deemed unnecessary or inappropriate. For example, when using a solution with stable URIs, the validation check of the filename against the URIs (validate-filename-match-uri) may not be essential.
+
 ### URL Tests
 
 The `test_urls.py` script in the `tests` directory verifies 
