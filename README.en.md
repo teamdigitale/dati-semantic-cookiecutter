@@ -35,6 +35,8 @@ to the
 This section describes the automatic check and test procedures 
 used to ensure the quality and integrity of the repository content.
 
+The controls may be disabled if they are not applicable to your specific use case. For example, if you have already implemented a solution for stable URIs, the check on the equality between the names of files and related folders and the check between the names of files and related resources in URIs can be commented out.
+
 ### Automatic Checks (Pre-commit)
 
 This repository uses [pre-commit](https://pre-commit.com/) 
@@ -49,8 +51,6 @@ You can also run them manually at any time.
 To enable pre-commit checks in another repository, 
 copy the [`.pre-commit-config.yaml`](.pre-commit-config.yaml) file 
 and the [`.github/workflows/validate.yaml`](.github/workflows/validate.yaml) file.
-
-Note: It is possible to comment on checks deemed unnecessary or inappropriate. For example, when using a solution with stable URIs, the validation check of the filename against the URIs (validate-filename-match-uri) may not be essential.
 
 ### URL Tests
 
