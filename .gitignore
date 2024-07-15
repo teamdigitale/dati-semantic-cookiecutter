@@ -1,6 +1,7 @@
 # Insert here the files/folders/extensions you would like to exclude from git tracking
 *.py[co]
 .*
+!.github/  
 __pycache__
 *.log
 

@@ -89,10 +89,8 @@ def test_url():
             print(f"WARNING: root directory '{root_dir}' does not exist.")
 
     for file_path, url, root_dir in get_urls(root_dirs):
-        print(f"Testing URL: {url}")
 
         ret = request_url(requests.head, url)
-        print(f"status_code: {ret}")
 
         # Check if the response status code is 200 or 301 (redirect)
         if ret.status_code not in [200, 301]:
@@ -111,7 +109,7 @@ def test_url():
         print("\nErrors found during URL test:")
         for error in errors:
             print(error)
-        assert False, "\n".join(errors)
+        assert False
 
 # Run test
 test_url()

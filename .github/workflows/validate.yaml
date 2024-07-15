@@ -25,6 +25,5 @@ jobs:
       - name: Run a script
         run: |-
           pip install pre-commit
-          pip install rdflib
           pre-commit autoupdate
           pre-commit run --all-files --verbose
