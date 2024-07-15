@@ -21,7 +21,7 @@ Per la leggibilità:
 - Tutti i file JSON sono serializzati come YAML;
 - Tutti i file RDF sono serializzati come  `text/turtle`;
 
-### Asset semantici (schemi, vocabolari, ontologie)
+### Risorse semantici (schemi, vocabolari, ontologie)
 
 Tutte le risorse semantiche da raccogliere / pubblicare sono in `assets/`;
 I file al di fuori di questa directory vengono ignorati dal catalogo
@@ -54,6 +54,8 @@ fai riferimento alla
 
 Questa sezione descrive le procedure di controllo automatico e test, 
 utili per garantire la qualità e l'integrità del contenuto del repository.
+
+I controlli implementati possono essere disattivati se non applicabili al proprio caso d'uso. Ad esempio, se si è già implementata una propria soluzione per le URI stabili, il controllo sull'uguaglianza tra i nomi dei file e delle relative cartelle e tra il nome dei file e delle relative risorse negli URI non devono essere necessariamente superati, quindi possono essere commentati.
 
 ### Controlli Automatici (Pre-commit)
 
