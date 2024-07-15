@@ -68,11 +68,6 @@ Inoltre, è possibile eseguirli manualmente in qualsiasi momento.
 Per abilitare i controlli pre-commit in un altro repository, 
 copiare il file [`.pre-commit-config.yaml`](.pre-commit-config.yaml) e il file [`.github/workflows/validate.yaml`](.github/workflows/validate.yaml).
 
-Nota: È possibile commentare i controlli ritenuti non necessari o inappropriati. 
-Ad esempio, se si utilizza una soluzione con URI stabili, 
-il controllo di validazione del nome del file 
-rispetto agli URI (`validate-filename-match-uri`) potrebbe non essere indispensabile.
-
 ### Test URL
 
 Lo script `test_urls.py` nella directory `tests` consente di verificare 
